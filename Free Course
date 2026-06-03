@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSC 2028 Premium Course Landing Page</title>
+    <style>
+        /* ==========================================
+           ১. গ্লোবাল এবং কমন স্টাইলস
+        ========================================== */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Arial; 
+        }
+        
+        body { 
+            background-color: #ffffff; 
+            color: #1e293b; 
+            overflow-x: hidden;
+        }
+
+        /* কন্টেইনার স্পেসিং */
+        section {
+            padding: 60px 15px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* ==========================================
+           ২. হেডিং এবং নেভিগেশন সেকশন
+        ========================================== */
+        .header-wrapper {
+            background: #ffffff;
+            padding: 25px 15px;
+            text-align: center;
+            border-bottom: 1px solid #f1f5f9;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.03), transparent 70%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .main-title {
+            font-size: 34px;
+            font-weight: 800;
+            color: #ef4444; 
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 8px rgba(239, 68, 68, 0.1);
+        }
+
+        .batch-container {
+            display: inline-flex;
+            background: #f1f5f9;
+            padding: 6px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .batch-btn {
+            padding: 10px 24px;
+            color: #64748b;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            display: inline-block;
+        }
+
+        .batch-btn.active-batch {
+            background: #10b981; 
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        .batch-btn:active, .cat-btn:active, .details-btn:active {
+            background: #dc2626 !important;
+            color: #ffffff !important;
+            transform: scale(0.95);
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.5) !important;
+        }
+
+        .category-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cat-btn {
+            padding: 12px 24px;
+            background: #ffffff;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+            border-radius: 25px;
+            font-size: 14.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .cat-btn:hover {
+            transform: translateY(-3px);
+            border-color: #38bdf8;
+            color: #0284c7;
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.15);
+            animation: pulseGlow 1.5s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 8px 20px rgba(56, 189, 248, 0.1); }
+            100% { box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3); }
+        }
+
+        .cat-btn.current-page {
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important; 
+            color: #ffffff !important;
+            border-color: #1d4ed8 !important;
+            box-shadow: 0 6px 18px rgba(29, 78, 216, 0.3) !important;
+        }
+        /* ==========================================
+           ৩. অন্যান্য কোর্স সমূহ (কার্ড গ্রিড)
+        ========================================== */
+        .other-courses-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bubble-container { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; 
+        }
+        .bubble { 
+            position: absolute; bottom: -60px; background: rgba(239, 68, 68, 0.12); border-radius: 50%; animation: floatUp 12s infinite linear; 
+        }
+        @keyframes floatUp { 
+            0% { transform: translateY(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 0.5; } 100% { transform: translateY(-120vh); opacity: 0; } 
+        }
+
+        .courses-grid {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 500px; 
+            display: flex;
+            flex-direction: column;
+            gap: 25px; 
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 800;
+            color: #ef4444;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px rgba(239, 68, 68, 0.1);
+        }
+
+        .widget-card { 
+            background: #ffffff; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 20px; 
+            padding: 20px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04); 
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .widget-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.2);
+            animation: cardGlow 1.5s infinite alternate;
+        }
+
+        @keyframes cardGlow {
+            0% { box-shadow: 0 12px 25px rgba(56, 189, 248, 0.1); }
+            100% { box-shadow: 0 12px 30px rgba(56, 189, 248, 0.25); }
+        }
+
+        .widget-title { 
+            font-size: 17px; 
+            font-weight: 700; 
+            color: #1e293b; 
+            margin-bottom: 15px; 
+            text-align: left;
+            line-height: 1.4;
+        }
+        
+        .image-wrapper { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; border: 1px solid #f1f5f9; margin-bottom: 15px; }
+        .course-banner { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .widget-card:hover .course-banner { transform: scale(1.04); }
+
+        .features-panel { background: #f8fafc; border-radius: 12px; padding: 14px; margin-bottom: 15px; text-align: left; border: 1px solid #f1f5f9; }
+        .feature-item { font-size: 13px; color: #475569; margin-bottom: 6px; display: flex; align-items: center; font-weight: 600; }
+        .feature-item:last-child { margin-bottom: 0; }
+        .feature-item::before { content: '✓'; color: #10b981; font-weight: bold; margin-right: 8px; font-size: 14px; }
+
+        .details-btn { 
+            display: block; 
+            width: 100%; 
+            padding: 13px; 
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 12px; 
+            font-weight: 700; 
+            font-size: 14.5px;
+            text-align: center;
+            border: none; 
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .details-btn:hover { 
+            background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+            box-shadow: 0 6px 15px rgba(2, 132, 199, 0.35);
+        }
+
+        /* ==========================================
+           ৪. কোর্স যেভাবে সাজানো হয়েছে (ফিচার গ্রিড)
+        ========================================== */
+        .features-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #e3f2fd; 
+            border-radius: 24px;
+            padding: 50px 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+        }
+
+        .main-heading {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 45px;
+            letter-spacing: -0.5px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px 40px;
+        }
+
+        .feature-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 26px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        background-color 0.3s ease, 
+                        border-color 0.3s ease;
+        }
+
+        .feature-box:hover {
+            background: #ffffff;
+            border-color: rgba(124, 58, 237, 0.3); 
+            transform: scale(1.03) translateY(-4px); 
+            box-shadow: 0 20px 38px rgba(124, 58, 237, 0.15), 
+                        0 4px 18px rgba(6, 182, 212, 0.1);
+        }
+
+        .icon-box {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover .icon-box { transform: scale(1.1); }
+        .icon-box svg { width: 100%; height: 100%; }
+
+        .feature-title { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px; line-height: 1.4; }
+        .feature-desc { font-size: 14px; color: #475569; line-height: 1.6; font-weight: 500; }
+
+        /* ==========================================
+           ৫. অভিভাবক ও শিক্ষার্থীরা যা বলছে (টেستيমোনিয়াল)
+        ========================================== */
+        .header-area { text-align: center; margin-bottom: 25px; }
+        .stars { color: #ff9c00; font-size: 24px; margin-bottom: 5px; letter-spacing: 3px; }
+        
+        .scroll-container { 
+            width: 100%; 
+            overflow-x: hidden; 
+            white-space: nowrap; 
+            padding: 15px 20px;
+            cursor: grab;
+            touch-action: pan-y; 
+            -webkit-overflow-scrolling: touch;
+        }
+        .scroll-container:active { cursor: grabbing; }
+        
+        .video-card, .text-card { 
+            width: 300px; 
+            background: #f8fafc; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 16px; 
+            padding: 14px; 
+            margin-right: 20px; 
+            display: inline-block; 
+            vertical-align: top; 
+            white-space: normal; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            user-select: none;
+        }
+        
+        .text-card { height: 260px; display: inline-flex; flex-direction: column; justify-content: space-between; background: #f1f5f9; }
+        .video-player-box { position: relative; width: 100%; height: 250px; border-radius: 12px; overflow: hidden; margin-bottom: 12px; background: #cbd5e1; }
+        
+        .video-player-box::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: 2;
+        }
+        .video-player-box iframe { width: 100%; height: 100%; border: none; position: relative; z-index: 1; }
+        .video-player-box:hover::after { pointer-events: none; } 
+        
+        .review-content { font-size: 13px; color: #334155; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; text-align: justify; font-weight: 500; }
+        
+        .user-info-row { display: flex; align-items: center; gap: 10px; margin-top: auto; pointer-events: none; }
+        .avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1.5px solid #7c3aed; background: #e2e8f0; }
+        .info-text { display: flex; flex-direction: column; overflow: hidden; }
+        .user-name { font-size: 13.5px; font-weight: 700; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .user-sub { font-size: 11px; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .video-card:hover, .text-card:hover { transform: translateY(-3px); }
+
+        /* ==========================================
+           ৬. কৃতি শিক্ষার্থী সংবর্ধনা (ফটো মার্কি)
+        ========================================== */
+        .header-title { color: #d9531e; font-size: 24px; font-weight: bold; margin-bottom: 5px; text-align: center;}
+        .sub-title { color: #0d233a; font-size: 20px; font-weight: bold; margin-bottom: 25px; text-align: center;}
+        
+        .marquee-container { overflow: hidden; width: 100%; max-width: 1100px; margin: 0 auto; white-space: nowrap; }
+        .marquee-track { display: flex; width: max-content; }
+        .marquee-track:hover { animation-play-state: paused; }
+
+        .track-top { animation: scroll-left 25s linear infinite; margin-bottom: 20px; }
+        .track-bottom { animation: scroll-right 25s linear infinite; }
+
+        .photo-item { width: 320px; margin: 0 15px; flex-shrink: 0; }
+        .photo-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes scroll-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+        /* ==========================================
+           ৭. FAQ সেকশন
+        ========================================== */
+        .faq-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #e3f2fd; 
+            border-radius: 24px;
+            padding: 50px 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+        }
+
+        .faq-section h2 { text-align: center; font-size: 32px; font-weight: 800; color: #0f172a; margin-bottom: 45px; letter-spacing: -0.5px; }
+        .faq-item { margin-bottom: 20px; background: rgba(255, 255, 255, 0.6); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.8); overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+
+        .faq-item:hover {
+            background: #ffffff;
+            border-color: rgba(124, 58, 237, 0.3); 
+            transform: scale(1.015) translateY(-2px); 
+            box-shadow: 0 20px 38px rgba(124, 58, 237, 0.12), 0 4px 18px rgba(6, 182, 212, 0.08);
+        }
+
+        .faq-question { padding: 22px 26px; font-size: 18px; font-weight: 700; color: #0f172a; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+        .faq-question::after { content: '＋'; font-size: 22px; color: #1e90ff; font-weight: bold; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease; }
+        .faq-item.active .faq-question::after { transform: rotate(45deg); color: #ef4444; }
+
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1); background: rgba(255, 255, 255, 0.3); }
+        .faq-answer-content { padding: 22px 26px; font-size: 15px; color: #475569; line-height: 1.7; font-weight: 500; border-top: 1px solid rgba(255, 255, 255, 0.6); }
+        .highlight-green { color: #10b981; font-weight: 700; }
+
+        /* ==========================================
+           ৮. হেল্প লাইন (স্টুডেন্ট অ্যাডভাইজার)
+        ========================================== */
+        .helpline-section { display: flex; justify-content: center; align-items: center; }
+        .faq-wrapper { width: 100%; max-width: 450px; background: #ffffff; border-radius: 24px; padding: 24px 18px; border: 1px solid #eef2f5; animation: containerGlow 4s infinite ease-in-out; }
+
+        @keyframes containerGlow {
+            0%, 100% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 0 10px rgba(124, 58, 237, 0.05); }
+            50% { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06), 0 0 20px rgba(124, 58, 237, 0.2), 0 0 15px rgba(6, 182, 212, 0.15); }
+        }
+
+        .advisor-container { background: linear-gradient(185deg, #f8fafc 0%, #f1f5f9 100%); border-radius: 18px; padding: 24px 16px; text-align: center; border: 1px solid #e2e8f0; }
+        .phone-icon-box { width: 42px; height: 42px; background: #ffffff; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 12px; border: 1px solid #e2e8f0; }
+        .phone-icon-box svg { width: 20px; height: 20px; fill: #7c3aed; }
+
+        .advisor-title { font-size: 18px; font-weight: 800; color: #dc2626; margin-bottom: 10px; }
+        .advisor-subtitle { font-size: 14.5px; font-weight: 700; color: #1e293b; line-height: 1.5; margin-bottom: 18px; padding: 0 5px; }
+
+        .call-button {
+            display: inline-flex; align-items: center; justify-content: center; width: 100%; background: linear-gradient(135deg, #059669 0%, #047857 100%); color: #ffffff; text-decoration: none; padding: 13px 20px; font-size: 15px; font-weight: 700; border-radius: 12px; transition: all 0.3s ease; cursor: pointer; animation: greenButtonGlow 2.5s infinite;
+        }
+
+        @keyframes greenButtonGlow {
+            0% { box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3), 0 0 0 0 rgba(5, 150, 105, 0.3); }
+            70% { box-shadow: 0 4px 20px rgba(5, 150, 105, 0.5), 0 0 0 10px rgba(5, 150, 105, 0); }
+            100% { box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3), 0 0 0 0 rgba(5, 150, 105, 0); }
+        }
+
+        .call-button:hover { background: linear-gradient(135deg, #047857 0%, #065f46 100%); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(5, 150, 105, 0.6); animation: none; }
+
+        /* ==========================================
+           ৯. মিডিয়া কুয়েরি (রেসপন্সিভ ডিজাইন)
+        ========================================== */
+        @media (max-width: 768px) {
+            .features-grid { grid-template-columns: 1fr; gap: 24px; }
+            .main-heading, .faq-section h2 { font-size: 24px; margin-bottom: 30px; }
+            .features-container, .faq-section { padding: 30px 15px; }
+            .feature-box { padding: 20px; }
+            .feature-box:hover { transform: scale(1.01) translateY(-2px); }
+            .faq-question { padding: 18px 20px; font-size: 16px; }
+            .faq-answer-content { padding: 18px 20px; font-size: 14px; }
+            .faq-item:hover { transform: scale(1.005) translateY(-1px); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ১. হেডিং ও নেভিগেশন -->
+    <header class="header-wrapper">
+        <div class="main-title">HSC</div>
+        <div class="batch-container">
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/home" target="_blank" class="batch-btn" id="btn-home">Home</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-all-subjects" target="_blank" class="batch-btn" id="btn-all">All Subjects</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/home" target="_blank" class="batch-btn active-batch">HSC 28</a>
+        </div>
+        <div class="category-wrapper">
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-science" target="_blank" class="cat-btn" id="btn-science">Science</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-humanities" target="_blank" class="cat-btn" id="btn-humanities">Humanities</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-business-studies" target="_blank" class="cat-btn" id="btn-business">Business Studies</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/free-course" target="_blank" class="cat-btn" id="btn-free">Free Course</a>
+        </div>
+    </header>
+
+    <!-- ২. অন্যান্য কোর্স সমূহ -->
+    <section class="other-courses-section">
+        <div class="bubble-container" id="bubbleDiv"></div>
+        <div class="courses-grid">
+            <h2 class="section-title">অন্যান্য কোর্সসমূহ</h2>
+            
+            <!-- কার্ড ১ -->
+            <div class="widget-card">
+                <h3 class="widget-title">Money জ্ঞানী: Digital Financial Mastery</h3>
+                <div class="image-wrapper">
+                    <img class="course-banner" src="https://drive.google.com/thumbnail?id=1-tZAoZodcV-vuQxwc05JpH4NeaRC05uX&sz=w800" alt="Money জ্ঞানী">
+                </div>
+                <div class="features-panel">
+                    <div class="feature-item">৪০২৬৩ জন শিক্ষার্থী</div>
+                    <div class="feature-item">২৫টি ভিডিও</div>
+                    <div class="feature-item">৫ সেট কুইজ</div>
+                    <div class="feature-item">৫টি ব্যাজ</div>
+                </div>
+                <a href="https://10ms.io/hGl0yQ" target="_blank" class="details-btn">আরো বিস্তারিত জানুন</a>
+            </div>
+
+            <!-- কার্ড ২ -->
+            <div class="widget-card">
+                <h3 class="widget-title">HSC পদার্থবিজ্ঞান ফাউন্ডেশন কোর্স</h3>
+                <div class="image-wrapper">
+                    <img class="course-banner" src="https://drive.google.com/thumbnail?id=1nGQn8awvPaQe0C3SsqZlptgmQLbJ8vZT&sz=w800" alt="Physics">
+                </div>
+                <div class="features-panel">
+                    <div class="feature-item">২টি বিষয়</div>
+                    <div class="feature-item">১৩৮টি বেসিক বিল্ডিং ভিডিও</div>
+                    <div class="feature-item">১৩৮টি স্লাইড</div>
+                    <div class="feature-item">প্র্যাকটিস শিট</div>
+                </div>
+                <a href="https://10ms.io/pGl0DG" target="_blank" class="details-btn">আরো বিস্তারিত জানুন</a>
+            </div>
+
+            <!-- কার্ড ৩ -->
+            <div class="widget-card">
+                <h3 class="widget-title">HSC রসায়ন ফাউন্ডেশন কোর্স</h3>
+                <div class="image-wrapper">
+                    <img class="course-banner" src="https://drive.google.com/thumbnail?id=1RMfz7STl28I-lhuimp9segW1bbuKjmav&sz=w800" alt="Chemistry">
+                </div>
+                <div class="features-panel">
+                    <div class="feature-item">২টি বিষয়</div>
+                    <div class="feature-item">১১০টি বেসিক বিল্ডিং ভিডিও</div>
+                    <div class="feature-item">১১০টি স্লাইড</div>
+                    <div class="feature-item">প্র্যাকটিস শিট</div>
+                </div>
+                <a href="https://10ms.io/HGl0NN" target="_blank" class="details-btn">আরো বিস্তারিত জানুন</a>
+            </div>
+
+            <!-- কার্ড ৪ -->
+            <div class="widget-card">
+                <h3 class="widget-title">HSC উচ্চতর গণিত ফাউন্ডেশন কোর্স</h3>
+                <div class="image-wrapper">
+                    <img class="course-banner" src="https://drive.google.com/thumbnail?id=1gjv2FrhCOJQQcgn-pWVy2Kkpy_4H1gbI&sz=w800" alt="Higher Math">
+                </div>
+                <div class="features-panel">
+                    <div class="feature-item">২টি বিষয়</div>
+                    <div class="feature-item">২০০টি বেসিক বিল্ডিং ভিডিও</div>
+                    <div class="feature-item">২০০টি স্লাইড</div>
+                    <div class="feature-item">প্র্যাকটিস শিট</div>
+                </div>
+                <a href="https://10ms.io/TGl2ir" target="_blank" class="details-btn">আরো বিস্তারিত জানুন</a>
+            </div>
+
+            <!-- কার্ড ৫ -->
+            <div class="widget-card">
+                <h3 class="widget-title">HSC জীববিজ্ঞান ফাউন্ডেশন কোর্স</h3>
+                <div class="image-wrapper">
+                    <img class="course-banner" src="https://drive.google.com/thumbnail?id=1ogNU3OJfkvwgNX_-0S8gAa7HjFyYBmmR&sz=w800" alt="Biology">
+                </div>
+                <div class="features-panel">
+                    <div class="feature-item">২টি বিষয়</div>
+                    <div class="feature-item">১৩৭টি বেসিক বিল্ডিং ভিডিও</div>
+                    <div class="feature-item">১৩৭টি স্লাইড</div>
+                    <div class="feature-item">প্র্যাকটিস শিট</div>
+                </div>
+                <a href="https://10ms.io/EGl2lx" target="_blank" class="details-btn">আরো বিস্তারিত জানুন</a>
+            </div>
+
+            <!-- কার্ড ৬ -->
+            <div class="widget-card">
+                <h3 class="widget-title">HSC ফাউন্ডেশন কোর্স (বাংলা, ইংরেজি ও ICT)</h3>
+                <div class="image-wrapper">
+                    <img class="course-banner" src="https://drive.google.com/thumbnail?id=13FlZde58wYM3Iu1iOkyp4xZEclRATden&sz=w800" alt="Language & ICT">
+                </div>
+                <div class="features-panel">
+                    <div class="feature-item">৩৮৭০৬ জন শিক্ষার্থী</div>
+                    <div class="feature-item">৩টি বিষয়</div>
+                    <div class="feature-item">৩৬টি লাইভ ক্লাস</div>
+                    <div class="feature-item">৩৬টি লেকচার স্লাইড</div>
+                </div>
+                <a href="https://10ms.io/cGl9ih" target="_blank" class="details-btn">আরো বিস্তারিত জানুন</a>
+            </div>
+        </div>
+    </section>
+    <!-- ৩. курс যেভাবে সাজানো হয়েছে -->
+    <section>
+        <div class="features-container">
+            <h2 class="main-heading">কোর্স গুলো যেভাবে সাজানো হয়েছে</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24" fill="#ef4444"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-12c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg>
+                    </div>
+                    <div class="feature-title">ক্লাসের মধ্যেই বেসিক ক্লিয়ার</div>
+                    <div class="feature-desc">ক্লাসে টিচার প্রতিটি টপিক সহজে বুঝিয়ে স্টুডেন্ট এর বেসিক স্ট্রং করে দিবেন</div>
+                </div>
+                <div class="feature-box">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24" fill="#1e90ff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                    </div>
+                    <div class="feature-title">ক্লাসেয় মাস্টার বুকে প্র্যাকটিস</div>
+                    <div class="feature-desc">ক্লাসে টিচার স্টুডেন্টের মাস্টার বুক ফলো করে পড়াবেন এবং ক্লাসের ভিতরেই বইয়ে থাকা প্রশ্নে পরীক্ষা নিবেন।</div>
+                </div>
+                <div class="feature-box">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24" fill="#10b981"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+                    </div>
+                    <div class="feature-title">24/7 ডাউট সলভ</div>
+                    <div class="feature-desc">২৪/৭ সকল ডাউট সলভ করার জন্য আছে SuperSolve</div>
+                </div>
+                <div class="feature-box">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24" fill="#ff8c00"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                    </div>
+                    <div class="feature-title">হোমওয়ার্ক সাবমিশন</div>
+                    <div class="feature-desc">প্রতিটি ক্লাস শেষে টিচার হোমওয়ার্ক করতে দিবেন যেটা ১৬ ঘন্টার মধ্যে সাবমিট করলে শিক্ষার্থীরা পাবে পারসোনালাইজড ফিডব্যাক</div>
+                </div>
+                <div class="feature-box">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24" fill="#a855f7"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    </div>
+                    <div class="feature-title">SuperPrep</div>
+                    <div class="feature-desc">'SuperPrep' ফিচারের মাধ্যমে প্রতিটি বিষয়ের যেকোনো অধ্যায়ের উপর আনলিমিটেড পরীক্ষা দিয়ে নিজেকে যাচাই করতে পারবে।</div>
+                </div>
+                <div class="feature-box">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24" fill="#ec4899"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zm0-10v2h14V7H7z"/></svg>
+                    </div>
+                    <div class="feature-title">উইকলি ও মান্থলি পরীক্ষা</div>
+                    <div class="feature-desc">স্টুডেন্ট এর অগ্রগতি যাচাই করতে প্রতিটি বিষয়ের উপর উইকলি এবং মান্থলি এক্সাম নেয়া হবে।</div>
+                </div>
+                <div class="feature-box">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24" fill="#eab308"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    </div>
+                    <div class="feature-title">স্টুডেন্ট প্রোগ্রেসের রিপোর্ট কার্ড</div>
+                    <div class="feature-desc">স্টুডেন্ট এর ক্লাসের উপস্থিতি, পরীক্ষার রেজাল্ট সহ যাবতীয় অগ্রগতি জানতে প্যারেন্টসরা মাসিক রিপোর্ট কার্ড পাবেন।</div>
+                </div>
+                <div class="feature-box">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24" fill="#00bfff"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                    </div>
+                    <div class="feature-title">মান্থলি প্যারেন্ট-টিচারস্ মিটিং</div>
+                    <div class="feature-desc">প্রতি মাসে প্যারেন্টসদের সাথে টিচাররা মিটিং করে যেকোনো সমস্যা বা পরামর্শ শুনে সেই অনুসারে পদক্ষেপ নিবেন।</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ৪. অভিভাবক ও শিক্ষার্থীরা যা বলছে -->
+    <section>
+        <div class="header-area">
+            <div class="stars">★★★★★</div>
+            <h2 class="main-title">অভিভাবক ও শিক্ষার্থীরা যা বলছেন</h2>
+        </div>
+        
+        <!-- ভিডিও রিভিউ ট্র্যাক -->
+        <div class="scroll-container" id="videoTrack">
+            <div class="video-card">
+                <div class="video-player-box">
+                    <iframe src="https://www.youtube.com/embed/xPgIpyx04bE?autoplay=1&mute=1&loop=1&playlist=xPgIpyx04bE&controls=1&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="user-info-row">
+                    <img class="avatar" src="https://ui-avatars.com/api/?name=M&background=7c3aed&color=fff" alt="M">
+                    <div class="info-text"><span class="user-name">মেহজাবিন</span><span class="user-sub">শিক্ষার্থী, ১০ম শ্রেণী</span></div>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-player-box">
+                    <iframe src="https://www.youtube.com/embed/L9NFfsYHpJU?autoplay=1&mute=1&loop=1&playlist=L9NFfsYHpJU&controls=1&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="user-info-row">
+                    <img class="avatar" src="https://ui-avatars.com/api/?name=S&background=0ea5e9&color=fff" alt="S">
+                    <div class="info-text"><span class="user-name">সাবিহা এবং হাবিবা</span><span class="user-sub">ঝাটিবেলাই সাদেক আলী উচ্চ বিদ্যালয়</span></div>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-player-box">
+                    <iframe src="https://www.youtube.com/embed/owAIxAdc3oA?autoplay=1&mute=1&loop=1&playlist=owAIxAdc3oA&controls=1&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="user-info-row">
+                    <img class="avatar" src="https://ui-avatars.com/api/?name=A&background=ec4899&color=fff" alt="A">
+                    <div class="info-text"><span class="user-name">আতকিয়া এবং তাসফিয়া</span><span class="user-sub">বি এ এফ শাহীন কলেজ</span></div>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-player-box">
+                    <iframe src="https://www.youtube.com/embed/qiWVZ6uAxnU?autoplay=1&mute=1&loop=1&playlist=qiWVZ6uAxnU&controls=1&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="user-info-row">
+                    <img class="avatar" src="https://ui-avatars.com/api/?name=Z&background=f59e0b&color=fff" alt="Z">
+                    <div class="info-text"><span class="user-name">জিসান</span><span class="user-sub">গাজীপুর ক্যান্টনমেন্ট পি. এস. অ্যান্ড কলেজ</span></div>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-player-box">
+                    <iframe src="https://www.youtube.com/embed/buYiU9v8AS0?autoplay=1&mute=1&loop=1&playlist=buYiU9v8AS0&controls=1&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="user-info-row">
+                    <img class="avatar" src="https://ui-avatars.com/api/?name=I&background=10b981&color=fff" alt="I">
+                    <div class="info-text"><span class="user-name">ইসরাত জাহান লামিয়া</span><span class="user-sub">বেগম রোকেয়া কিশালয়া বালিকা উচ্চ বিদ্যালয়</span></div>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-player-box">
+                    <iframe src="https://www.youtube.com/embed/aaRTwdL-u84?autoplay=1&mute=1&loop=1&playlist=aaRTwdL-u84&controls=1&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="user-info-row">
+                    <img class="avatar" src="https://ui-avatars.com/api/?name=R&background=ef4444&color=fff" alt="R">
+                    <div class="info-text"><span class="user-name">রাফসান</span><span class="user-sub">শেখ রাসেল ক্যান্টনমেন্ট পি. এস. অ্যান্ড কলেজ</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- টেক্সট রিভিউ ট্র্যাক -->
+        <div class="scroll-container" id="textTrack">
+            <div class="text-card">
+                <p class="review-content">টেন মিনিট স্কুলকে আমি অসংখ্য ধন্যবাদ জানাচ্ছি। আমি যখন ২০২৪ সালে ৮ম শ্রেণীতে উঠি তখন ছিলো নতুন কারিকুলাম। প্রায় অর্ধেক মাস এরকম অগোছালো কেটে গেছে। যখন পরীক্ষার সিদ্ধান্ত নেওয়া হয় এবং এতো বড় একটা সিলেবাস আমাদের ধরিয়ে দেওয়া হয় তখন আমার মতো প্রায় সবার অবস্থা একদম নাজেহাল। ঠিক ঐরকম মুহূর্তে 10 minute school নিয়ে আসে তাদের ফ্রি সাজেশন। যা আমাদের পরীক্ষার টেনশন একেবারেই দূর করে দেয়া এবং আপনাদের ফ্রি সাজেশন আমার পরীক্ষায় রেজাল্টে খুবই ইতিবাচক প্রভাব রেখেছে।</p>
+                <div class="user-info-row">
+                    <img class="avatar" src="https://ui-avatars.com/api/?name=R&background=10b981&color=fff" alt="R">
+                    <div class="info-text"><span class="user-name">রেদোয়ান আহমেদ</span><span class="user-sub">वीरশ্রেষ্ঠ নূর মোহাম্মদ পাবলিক কলেজ</span></div>
+                </div>
+            </div>
+            <div class="text-card">
+                <p class="review-content">আমি গত 4 বছর ধরে প্রথম স্থান অর্জন করে আসছি। এইবছরও আমি 9 থেকে 10এ উত্তীর্ণ হয়েছি প্রথম স্থান অর্জন করে। এর পেছনে টেন মিনিট স্কুলের অবদান অনেক ছিল। তাই আমি টেন মিনিট স্কুলকে অনেক অনেক ধন্যবাদ জানাচ্ছি। আসলে আমি 10 ms এর ফ্রি ক্লাস গুলো করে আসছি। আর এই ক্লাস গুলোই আমাকে inspire করেছে ভালো একটা স্থান অর্জন করার। এবং আমি এই বছর class 10 এর বিজ্ঞান বিভাগের কোর্স টিতে ভর্তি হয়েছি। and I hope কোর্সটি complete করে এসএসসি তে একটি ভালো রেজাল্ট অর্জন করতে পারব। আর আমি টেন মিনিট স্কুলকে আবারো ধন্যবাদ জানাচ্ছি। অসংখ্য ধন্যবাদ।</p>
+                <div class="user-info-row">
+                    <img class="avatar" src="https://ui-avatars.com/api/?name=P&background=ef4444&color=fff" alt="P">
+                    <div class="info-text"><span class="user-name">পূজা রানী দাস</span><span class="user-sub">The Roses Collectorate School, Habiganj</span></div>
+                </div>
+            </div>
+            <div class="text-card">
+                <p class="review-content">টেন মিনিট স্কুল আমার পড়াশোনায় অনেক হেল্প করেছে। অনেক অভিজ্ঞ টিচারদের স্টাডি টিপস, আর তাদের ভালো করে পড়ানোর কারণে আমার বার্ষিক পরীক্ষার রেজাল্ট অনেক ভালো হয়েছে। থ্যাংক ইউ, টেন মিনিট স্কুল।</p>
+                <div class="user-info-row">
+                    <img class="avatar" src="https://ui-avatars.com/api/?name=J&background=6366f1&color=fff" alt="J">
+                    <div class="info-text"><span class="user-name">জাহিদ আলম</span><span class="user-sub">কমর আলী হাই স্কুল, নারায়ণগঞ্জ</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ৫. কৃতি শিক্ষার্থী সংবর্ধনা -->
+    <section>
+        <div class="header-title">কৃতি শিক্ষার্থী সংবর্ধনা ২০২৫</div>
+        <div class="sub-title">সারাদেশ থেকে আমাদের ৯৫০+ শিক্ষার্থী বার্ষিক পরীক্ষায় ১ম হয়েছে</div>
+
+        <div class="marquee-container">
+            <div class="marquee-track track-top">
+                <div class="photo-item"><img src="https://lh3.googleusercontent.com/d/1LzawRTh31s2udQZX1uNlVckNSXS7oOtf" alt="Photo 1"></div>
+                <div class="photo-item"><img src="https://lh3.googleusercontent.com/d/1IT66mmXtRNBrWksX4YK3kjcsWRWw2vDa" alt="Photo 2"></div>
+                <div class="photo-item"><img src="https://lh3.googleusercontent.com/d/166wi01jC_gMjdV79gLpvm6hKJRSF2aog" alt="Photo 3"></div>
+                <div class="photo-item"><img src="https://lh3.googleusercontent.com/d/1LzawRTh31s2udQZX1uNlVckNSXS7oOtf" alt="Photo 1"></div>
+                <div class="photo-item"><img src="https://lh3.googleusercontent.com/d/1IT66mmXtRNBrWksX4YK3kjcsWRWw2vDa" alt="Photo 2"></div>
+                <div class="photo-item"><img src="https://lh3.googleusercontent.com/d/166wi01jC_gMjdV79gLpvm6hKJRSF2aog" alt="Photo 3"></div>
+            </div>
+            <div class="marquee-track track-bottom">
+                <div class="photo-item"><img src="https://lh3.googleusercontent.com/d/1_7kJJw8Tu_Lyk6lu5c0ignWR3UoILyOL" alt="Photo 4"></div>
+                <div class="photo-item"><img src="https://lh3.googleusercontent.com/d/1Mef_dW2Q9WJKGfO01jzi0qAbevtJSkTi" alt="Photo 5"></div>
+                <div class="photo-item"><img src="https://lh3.googleusercontent.com/d/17Pry_aAw7hdOsuak8tjdDtpwh157E3bp" alt="Photo 6"></div>
+                <div class="photo-item"><img src="https://lh3.googleusercontent.com/d/1_7kJJw8Tu_Lyk6lu5c0ignWR3UoILyOL" alt="Photo 4"></div>
+                <div class="photo-item"><img src="https://lh3.googleusercontent.com/d/1Mef_dW2Q9WJKGfO01jzi0qAbevtJSkTi" alt="Photo 5"></div>
+                <div class="photo-item"><img src="https://lh3.googleusercontent.com/d/17Pry_aAw7hdOsuak8tjdDtpwh157E3bp" alt="Photo 6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ৬. FAQ সেকশন -->
+    <section>
+        <div class="faq-section">
+            <h2>সচরাচর জিজ্ঞাসিত প্রশ্নাবলী (FAQ)</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">কোর্সগুলো কাদের জন্য?</div>
+                <div class="faq-answer"><div class="faq-answer-content">এই কোর্সটি মূলত <span class="highlight-green">SSC 2026</span> এবং ভবিষ্যৎ <span class="highlight-green">HSC 28 ব্যাচের</span> শিক্ষার্থীদের জন্য বিশেষভাবে তৈরি করা হয়েছে।</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">কোর্সগুলো কি ইংরেজি ভার্সনের শিক্ষার্থীদের জন্য প্রযোজ্য?</div>
+                <div class="faq-answer"><div class="faq-answer-content">না, সম্পূর্ণ কোর্সটি এবং এর সকল কন্টেন্ট শুধু <span class="highlight-green">বাংলা ভার্সনের</span> শিক্ষার্থীদের জন্য সাজানো হয়েছে।</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">ক্লাস কবে থেকে শুরু হবে?</div>
+                <div class="faq-answer"><div class="faq-answer-content">ক্লাস মূলত <span class="highlight-green">সেপ্টেম্বর/অক্টোবর, ২০২৬ (সম্ভাবনা)</span> থেকে শুরু হবে।</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">মাস্টারবুক কীভাবে পাবো?</div>
+                <div class="faq-answer"><div class="faq-answer-content">কোর্সে ভর্তি হওয়ার সময় কোর্সের সাথেই আপনার প্রয়োজনীয় মাস্টারবুক অর্ডার করতে পারবেন।</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">কত দিনের কোর্স এটি?</div>
+                <div class="faq-answer"><div class="faq-answer-content">এটি সর্বমোট <span class="highlight-green">১৬ মাসের কোর্স</span>। যেখানে প্রতিটি সাইকেল ৪ মাস মেয়াদী হবে।</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">কত দিন পর্যন্ত ক্লাসের অ্যাক্সেস থাকবে?</div>
+                <div class="faq-answer"><div class="faq-answer-content">আপনার <span class="highlight-green">HSC এক্সাম শেষ হওয়া পর্যন্ত</span> সকল ক্লাস ও ম্যাটেরিয়ালসের ফুল অ্যাক্সেস থাকবে।</div></div>
+            </div>
+        </div>
+    </section>
+    <!-- ৭. হেল্প লাইন -->
+    <section class="helpline-section">
+        <div class="faq-wrapper">
+            <div class="advisor-container">
+                <div class="phone-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23-.13-2.42-.33-3.57-.7l-2.2 2.2c2.83 1.44 6.06 2.26 9.48 2.3v-3.8zM5.3 9.17c-.37-1.15-.57-2.35-.7-3.57H.8c.04 3.42.87 6.65 2.31 9.48l2.19-2.19zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+                </div>
+                <div class="advisor-title">আর কোনো প্রশ্ন আছে?</div>
+                <div class="advisor-subtitle">সপ্তাহের যেকোনো দিন যেকোনো প্রয়োজনে আমাদের স্টুডেন্ট অ্যাডভাইজরের সাথে কথা বলতে</div>
+                <a href="tel:16910" class="call-button">কল করুন ১৬৯১০</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       ১০. জাভাস্ক্রিপ্ট কন্ট্রোলস
+    ========================================== */ -->
+    <script>
+        // ১. হেডিং ইউআরএল ট্র্যাকার
+        const currentUrl = document.referrer || window.location.href;
+        if (currentUrl.includes("hsc-28-science")) {
+            document.getElementById("btn-science").classList.add("current-page");
+        } else if (currentUrl.includes("hsc-28-humanities")) {
+            document.getElementById("btn-humanities").classList.add("current-page");
+        } else if (currentUrl.includes("hsc-28-business-studies")) {
+            document.getElementById("btn-business").classList.add("current-page");
+        } else if (currentUrl.includes("free-course")) {
+            document.getElementById("btn-free").classList.add("current-page");
+        } else if (currentUrl.includes("hsc-28-all-subjects")) {
+            document.getElementById("btn-all").classList.add("current-page");
+        } else if (currentUrl.includes("home")) {
+            document.getElementById("btn-home").classList.add("current-page");
+        }
+
+        // ২. অন্যান্য কোর্স বাবল亗 অ্যানিমেশন
+        for(let i=0; i<8; i++) {
+            let b = document.createElement('div'); b.className = 'bubble';
+            b.style.left = (Math.random() * 90) + '%';
+            b.style.width = b.style.height = (Math.random() * 35 + 15) + 'px';
+            b.style.animationDelay = (Math.random() * 6) + 's';
+            document.getElementById('bubbleDiv').appendChild(b);
+        }
+
+        // ৩. টেস্টিমোনিয়াল সাইক্লিক স্ক্রোল
+        const initCyclicScroll = (containerId, direction = 'left', speed = 1) => {
+            const container = document.getElementById(containerId);
+            if(!container) return;
+            const originalContent = container.innerHTML;
+            container.innerHTML = originalContent + originalContent; 
+
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            let autoScrollTimer;
+
+            if (direction === 'right') { container.scrollLeft = container.scrollWidth / 2; }
+
+            const startAutoScroll = () => {
+                autoScrollTimer = setInterval(() => {
+                    if (!isDown) {
+                        if (direction === 'left') {
+                            container.scrollLeft += speed;
+                            if (container.scrollLeft >= container.scrollWidth / 2) container.scrollLeft = 0;
+                        } else {
+                            container.scrollLeft -= speed;
+                            if (container.scrollLeft <= 0) container.scrollLeft = container.scrollWidth / 2;
+                        }
+                    }
+                }, 25);
+            };
+
+            const stopAutoScroll = () => clearInterval(autoScrollTimer);
+            const checkBounds = () => {
+                if (container.scrollLeft >= container.scrollWidth / 2) container.scrollLeft = 0;
+                else if (container.scrollLeft <= 0) container.scrollLeft = container.scrollWidth / 2;
+            };
+
+            container.addEventListener('mousedown', (e) => { isDown = true; stopAutoScroll(); startX = e.pageX - container.offsetLeft; scrollLeft = container.scrollLeft; });
+            container.addEventListener('mouseleave', () => { if (isDown) { isDown = false; startAutoScroll(); } });
+            container.addEventListener('mouseup', () => { isDown = false; startAutoScroll(); });
+            container.addEventListener('mousemove', (e) => { if (!isDown) return; e.preventDefault(); const x = e.pageX - container.offsetLeft; const walk = (x - startX) * 1.5; container.scrollLeft = scrollLeft - walk; checkBounds(); });
+            
+            container.addEventListener('touchstart', (e) => { isDown = true; stopAutoScroll(); startX = e.touches[0].pageX - container.offsetLeft; scrollLeft = container.scrollLeft; }, { passive: true });
+            container.addEventListener('touchend', () => { isDown = false; startAutoScroll(); }, { passive: true });
+            container.addEventListener('touchmove', (e) => { if (!isDown) return; const x = e.touches[0].pageX - container.offsetLeft; const walk = (x - startX) * 1.5; container.scrollLeft = scrollLeft - walk; checkBounds(); }, { passive: true });
+
+            startAutoScroll();
+        };
+
+        initCyclicScroll('videoTrack', 'left', 1);
+        initCyclicScroll('textTrack', 'right', 1);
+
+        // ৪. FAQ ড্রপডাউন ইন্টারঅ্যাকশন
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const answer = faqItem.querySelector('.faq-answer');
+                
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem && item.classList.contains('active')) {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-answer').style.maxHeight = null;
+                    }
+                });
+
+                faqItem.classList.toggle('active');
+                if (faqItem.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                } else {
+                    answer.style.maxHeight = null;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
