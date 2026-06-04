@@ -448,90 +448,26 @@
     </style>
 </head>
 <body>
+
+
+    
     <div class="section-wrapper">
         <div class="hero-grid">
             
             <div class="course-card">
-                <div class="top-section-title">বিজ্ঞান ও সাধারণ বিভাগ (HSC 28)</div>
-                <div class="dropdown-container">
-                    <label class="dropdown-label">আপনার বিষয়টি নির্বাচন করুন</label>
-                    <select id="scienceSelector" class="course-select" onchange="updateScienceCourse()">
-                        <option value="physics">পদার্থবিজ্ঞান (Physics)</option>
-                        <option value="chemistry">রসায়ন (Chemistry)</option>
-                        <option value="highermath">উচ্চতর গণিত (Higher Math)</option>
-                        <option value="biology">জীববিজ্ঞান (Biology)</option>
-                        <option value="ict">আইসিটি (ICT)</option>
-                        <option value="bangla">বাংলা (Bangla)</option>
-                        <option value="english">ইংরেজি (English)</option>
-                    </select>
-                </div>
-                <div class="banner-container">
-                    <img id="scienceBannerImg" class="banner-img" src="https://drive.google.com/thumbnail?id=14gS9-i7Iun7_iS68M0U3rU_71bB82vYt&sz=w800" alt="HSC 28 Science Banner">
-                </div>
-                <div class="badge-tag">Online Batch</div>
-                <div id="scienceMainTitle" class="main-title">HSC 28 অনলাইন ব্যাচ - পদার্থবিজ্ঞান সম্পূর্ণ কোর্স</div>
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <div class="icon-cell"><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div>
-                        <div id="sciFeature1" class="text-cell">পদার্থবিজ্ঞান ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="icon-cell"><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div>
-                        <div class="text-cell">বেসিক Strong + CQ/MCQ ফুল প্রস্তুতি (বোর্ড-প্যাটার্নে প্র্যাকটিস ফোকাস)</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="icon-cell"><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div>
-                        <div class="text-cell">লাইভ ক্লাস + HSC27 আর্কাইভ ক্লাস দিয়ে স্মার্ট রিভিশন ও মাস্টারবুক</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="icon-cell"><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div>
-                        <div class="text-cell">নিয়মিত ডেইলি ও মান্থলি MCQ এক্সাম এবং Regular Q&A Sessions</div>
-                    </div>
-                </div>
-                <button id="scienceCtaButton" onclick="handleScienceButtonClick()" class="cta-button">আরো বিস্তারিত জানুন</button>
-            </div>
+                
+        
 
-            <div class="course-card biz-card">
-                <div class="top-section-title">ব্যবসায় বিভাগ (HSC 28)</div>
-                <div class="dropdown-container">
-                    <label class="dropdown-label">আপনার বিষয়টি নির্বাচন করুন</label>
-                    <select id="courseSelector" class="course-select" onchange="updateCourse()">
-                        <option value="marketing">মার্কেটিং (Marketing)</option>
-                        <option value="management">ম্যানেজমেন্ট (Management)</option>
-                        <option value="accounting">একাউন্টিং (Accounting)</option>
-                        <option value="finance">ফাইন্যান্স (Finance)</option>
-                    </select>
-                </div>
-                <div class="banner-container">
-                    <img id="bannerImg" class="banner-img" src="https://drive.google.com/thumbnail?id=1TDohVg84SNVyFFPTP7ny_1GGSCGCUyei&sz=w800" alt="HSC 28 Business Studies Banner">
-                </div>
-                <div class="badge-tag">Online Batch</div>
-                <div id="mainTitle" class="main-title">HSC 28 অনলাইন ব্যাচ - মার্কেটিং সম্পূর্ণ কোর্স</div>
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <div class="icon-cell"><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div>
-                        <div id="feature1" class="text-cell">মার্কেটিং ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="icon-cell"><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div>
-                        <div class="text-cell">বেসিক Strong + CQ/MCQ ফুল প্রস্তুতি (বোর্ড-প্যাটার্নে প্র্যাকটিস ফোকাস)</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="icon-cell"><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div>
-                        <div class="text-cell">লাইভ ক্লাস + HSC27 আর্কাইভ ক্লাস দিয়ে স্মার্ট রিভিশন ও মাস্টারবুক</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="icon-cell"><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div>
-                        <div class="text-cell">নিয়মিত ডেইলি ও মান্থলি MCQ এক্সাম এবং Regular Q&A Sessions</div>
-                    </div>
-                    <div class="feature-item" id="fbGroupRow">
-                        <div class="icon-cell"><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div>
-                        <div id="feature5" class="text-cell">ডেডিকেটেড ফেসবুক গ্রুপে 24/7 কনফিউশন ক্লিয়ার</div>
-                    </div>
-                </div>
-                <button id="ctaButton" onclick="handleButtonClick()" class="cta-button">আরো বিস্তারিত জানুন</button>
-            </div>
 
+
+            
+            
+
+                
+                
+                    
+                    
+                
         </div>
     </div>
 
@@ -726,134 +662,17 @@
         </div>
     </div>
 
+
+    
+
     <!-- 🧠 জাভাস্ক্রিপ্ট লজিক (সবগুলো পার্ট ইন্টারঅ্যাক্টিভ করার জন্য) -->
     <script>
-        // 🔴 বিজ্ঞান ও সাধারণ বিভাগ ড্রপডাউন ডেটা
-        const scienceData = {
-            physics: {
-                title: "HSC 28 অনলাইন ব্যাচ - পদার্থবিজ্ঞান সম্পূর্ণ কোর্স",
-                feature1: "পদার্থবিজ্ঞান ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি",
-                link: "https://10ms.com/hsc28-physics",
-                img: "https://drive.google.com/thumbnail?id=14gS9-i7Iun7_iS68M0U3rU_71bB82vYt&sz=w800"
-            },
-            chemistry: {
-                title: "HSC 28 অনলাইন ব্যাচ - রসায়ন সম্পূর্ণ কোর্স",
-                feature1: "রসায়ন ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি",
-                link: "https://10ms.com/hsc28-chemistry",
-                img: "https://drive.google.com/thumbnail?id=1N8WdOQd41yXG16v30Xl5O3B2H82fW_Xt&sz=w800"
-            },
-            highermath: {
-                title: "HSC 28 অনলাইন ব্যাচ - উচ্চতর গণিত সম্পূর্ণ কোর্স",
-                feature1: "উচ্চতর গণিত ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি",
-                link: "https://10ms.com/hsc28-math",
-                img: "https://drive.google.com/thumbnail?id=17IuU8Z9j1Z7W0Xv30Xl5O3B2H82fW_Xt&sz=w800"
-            },
-            biology: {
-                title: "HSC 28 অনলাইন ব্যাচ - জীববিজ্ঞান সম্পূর্ণ কোর্স",
-                feature1: "জীববিজ্ঞান ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি",
-                link: "https://10ms.com/hsc28-biology",
-                img: "https://drive.google.com/thumbnail?id=1B8WdOQd41yXG16v30Xl5O3B2H82fW_Xt&sz=w800"
-            },
-            ict: {
-                title: "HSC 28 অনলাইন ব্যাচ - আইসিটি সম্পূর্ণ কোর্স",
-                feature1: "আইসিটি (ICT) বিষয়ের Board-based A+ প্রস্তুতি",
-                link: "https://10ms.com/hsc28-ict",
-                img: "https://drive.google.com/thumbnail?id=1I8WdOQd41yXG16v30Xl5O3B2H82fW_Xt&sz=w800"
-            },
-            bangla: {
-                title: "HSC 28 অনলাইন ব্যাচ - বাংলা সম্পূর্ণ কোর্স",
-                feature1: "বাংলা ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি",
-                link: "https://10ms.com/hsc28-bangla",
-                img: "https://drive.google.com/thumbnail?id=1BaWdOQd41yXG16v30Xl5O3B2H82fW_Xt&sz=w800"
-            },
-            english: {
-                title: "HSC 28 অনলাইন ব্যাচ - ইংরেজি সম্পূর্ণ কোর্স",
-                feature1: "ইংরেজি ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি",
-                link: "https://10ms.com/hsc28-english",
-                img: "https://drive.google.com/thumbnail?id=1EnWdOQd41yXG16v30Xl5O3B2H82fW_Xt&sz=w800"
-            }
-        };
+        
 
-        function updateScienceCourse() {
-            const selector = document.getElementById('scienceSelector');
-            const selectedValue = selector.value;
-            const data = scienceData[selectedValue];
 
-            if(data) {
-                document.getElementById('scienceMainTitle').innerText = data.title;
-                document.getElementById('sciFeature1').innerText = data.feature1;
-                document.getElementById('scienceBannerImg').src = data.img;
-            }
-        }
 
-        function handleScienceButtonClick() {
-            const selector = document.getElementById('scienceSelector');
-            const selectedValue = selector.value;
-            const data = scienceData[selectedValue];
-            if(data) {
-                window.open(data.link, '_blank');
-            }
-        }
 
-        // 🔵 ব্যবসায় শিক্ষা ড্রপডাউন ডেটা
-        const businessData = {
-            marketing: {
-                title: "HSC 28 অনলাইন ব্যাচ - মার্কেটিং সম্পূর্ণ কোর্স",
-                feature1: "মার্কেটিং ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি",
-                link: "https://10ms.com/hsc28-marketing",
-                img: "https://drive.google.com/thumbnail?id=1TDohVg84SNVyFFPTP7ny_1GGSCGCUyei&sz=w800",
-                showFb: true
-            },
-            management: {
-                title: "HSC 28 অনলাইন ব্যাচ - ম্যানেজমেন্ট সম্পূর্ণ কোর্স",
-                feature1: "ম্যানেজমেন্ট ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি",
-                link: "https://10ms.com/hsc28-management",
-                img: "https://drive.google.com/thumbnail?id=1vL9AolF77pZ-6f4tM0b9nJ-9lO8Xb7_d&sz=w800",
-                showFb: true
-            },
-            accounting: {
-                title: "HSC 28 অনলাইন ব্যাচ - একাউন্টিং সম্পূর্ণ কোর্স",
-                feature1: "একাউন্টিং ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি",
-                link: "https://10ms.com/hsc28-accounting",
-                img: "https://drive.google.com/thumbnail?id=1rK9MnL88pZ-7g5tN1b0mK-8lP7Wb6_c&sz=w800",
-                showFb: false
-            },
-            finance: {
-                title: "HSC 28 অনলাইন ব্যাচ - ফাইন্যান্স সম্পূর্ণ কোর্স",
-                feature1: "ফাইন্যান্স ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি",
-                link: "https://10ms.com/hsc28-finance",
-                img: "https://drive.google.com/thumbnail?id=1mJ9NkL99pZ-8h5tN2b0mK-9lP8Wb5_f&sz=w800",
-                showFb: false
-            }
-        };
-
-        function updateCourse() {
-            const selector = document.getElementById('courseSelector');
-            const selectedValue = selector.value;
-            const data = businessData[selectedValue];
-
-            if(data) {
-                document.getElementById('mainTitle').innerText = data.title;
-                document.getElementById('feature1').innerText = data.feature1;
-                document.getElementById('bannerImg').src = data.img;
-
-                const fbRow = document.getElementById('fbGroupRow');
-                if(data.showFb) {
-                    fbRow.style.display = 'table';
-                } else {
-                    fbRow.style.display = 'none';
-                }
-            }
-        }
-
-        function handleButtonClick() {
-            const selector = document.getElementById('courseSelector');
-            const selectedValue = selector.value;
-            const data = businessData[selectedValue];
-            if(data) {
-                window.open(data.link, '_blank');
-            }
-        }
+        
 
         // ❓ FAQ অ্যাকর্ডিয়ন স্ক্রিপ্ট
         document.querySelectorAll('.faq-question').forEach(button => {
