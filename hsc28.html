@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="bn">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Animated Google Sites Header</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        /* সম্পূর্ণ সাদা ব্যাকগ্রাউন্ড ও সফট গ্লো এরিয়া */
+        .header-wrapper {
+            background: #ffffff;
+            padding: 25px 15px;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        /* ব্যাকগ্রাউন্ড লাইট এনিমেশন ইফেক্ট */
+        .header-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.03), transparent 70%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* মূল HSC হেডিং টাইটেল */
+        .main-title {
+            font-size: 34px;
+            font-weight: 800;
+            color: #ef4444; /* আকর্ষণীয় লাল টোন */
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 8px rgba(239, 68, 68, 0.1);
+        }
+
+        /* ব্যাচ সিলেক্টর ক্যাপসুল বক্স */
+        .batch-container {
+            display: inline-flex;
+            background: #f1f5f9;
+            padding: 6px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .batch-btn {
+            padding: 10px 24px;
+            color: #64748b;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            display: inline-block;
+        }
+
+        /* HSC 28 বাটন - যা একটিভ থাকবে এবং প্রেস করলে লাল হবে */
+        .batch-btn.active-batch {
+            background: #10b981; /* সবুজ কালার */
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        /* প্রেস/ক্লিক করলে লাল রঙের এনিমেশন ইফেক্ট */
+        .batch-btn:active, .cat-btn:active {
+            background: #dc2626 !important;
+            color: #ffffff !important;
+            transform: scale(0.95);
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.5) !important;
+        }
+
+        /* ক্যাটাগরি বাটন এরিয়া */
+        .category-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* গ্লোয়িং এনিমেশন সহ প্রিমিয়াম ক্যাটাগরি বাটন */
+        .cat-btn {
+            padding: 12px 24px;
+            background: #ffffff;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+            border-radius: 25px;
+            font-size: 14.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        /* বাটন হোভার/এনিমেশন ইফেক্ট */
+        .cat-btn:hover {
+            transform: translateY(-3px);
+            border-color: #38bdf8;
+            color: #0284c7;
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.15);
+            animation: pulseGlow 1.5s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 8px 20px rgba(56, 189, 248, 0.1); }
+            100% { box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3); }
+        }
+
+        /* পেজ সিলেক্ট বা চাপ দিলে যে কালারটি সবুজ থেকে অন্য কালার (Royal Blue) হবে */
+        .cat-btn.current-page {
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important; /* প্রিমিয়াম রয়্যাল ব্লু */
+            color: #ffffff !important;
+            border-color: #1d4ed8 !important;
+            box-shadow: 0 6px 18px rgba(29, 78, 216, 0.3) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-wrapper">
+        <div class="main-title">HSC</div>
+
+        <div class="batch-container">
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/home" target="_blank" class="batch-btn" id="btn-home">Home</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-all-subjects" target="_blank" class="batch-btn" id="btn-all">All Subjects</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/home" target="_blank" class="batch-btn active-batch">HSC 28</a>
+        </div>
+
+        <div class="category-wrapper">
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-science" target="_blank" class="cat-btn" id="btn-science">Science</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-humanities" target="_blank" class="cat-btn" id="btn-humanities">Humanities</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-business-studies" target="_blank" class="cat-btn" id="btn-business">Business Studies</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/free-course" target="_blank" class="cat-btn" id="btn-free">Free Course</a>
+        </div>
+    </div>
+
+    <script>
+        // সিকিউরিটি বাইপাস করে বর্তমানে কোন পেজে আছে তা ট্র্যাক করার স্মার্ট স্ক্রিপ্ট
+        const currentUrl = document.referrer || window.location.href;
+        
+        if (currentUrl.includes("hsc-28-science")) {
+            document.getElementById("btn-science").classList.add("current-page");
+        } else if (currentUrl.includes("hsc-28-humanities")) {
+            document.getElementById("btn-humanities").classList.add("current-page");
+        } else if (currentUrl.includes("hsc-28-business-studies")) {
+            document.getElementById("btn-business").classList.add("current-page");
+        } else if (currentUrl.includes("free-course")) {
+            document.getElementById("btn-free").classList.add("current-page");
+        } else if (currentUrl.includes("hsc-28-all-subjects")) {
+            document.getElementById("btn-all").classList.add("current-page");
+        } else if (currentUrl.includes("home")) {
+            document.getElementById("btn-home").classList.add("current-page");
+        }
+    </script>
+
+</body>
+
+
+
+    
+
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSC 2028 Complete Online Batch Landing Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: #1e293b;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* কমন কন্টেইনার লেআউট */
+        .section-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 15px;
+        }
+
+        /* পার্ট-০১ গ্রিড লেআউট (Hero Section) */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            justify-content: center;
+            align-items: start;
+        }
+
+        /* 🔴 পার্ট-০১: সায়েন্স/সাধারণ কার্ড স্টাইল */
+        .course-card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+            width: 100%;
+            padding: 25px;
+            border: 1px solid #f1f5f9;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.08), 0 0 30px rgba(220, 38, 38, 0.05);
+        }
+
+        .top-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .dropdown-container {
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .dropdown-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .course-select {
+            width: 100%;
+            padding: 13px 16px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            background-color: #ffffff;
+            border: 2px solid #f87171;
+            border-radius: 12px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+            appearance: none;
+            -webkit-appearance: none;
+            animation: dropdownRedGlow 2.5s infinite ease-in-out;
+        }
+
+        @keyframes dropdownRedGlow {
+            0%, 100% {
+                box-shadow: 0 0 8px rgba(220, 38, 38, 0.25), inset 0 0 4px rgba(220, 38, 38, 0.05);
+                border-color: #f87171;
+            }
+            50% {
+                box-shadow: 0 0 18px rgba(220, 38, 38, 0.55), 0 0 10px rgba(220, 38, 38, 0.2);
+                border-color: #dc2626;
+            }
+        }
+
+        .dropdown-container::after {
+            content: '▼';
+            font-size: 11px;
+            color: #dc2626;
+            position: absolute;
+            right: 16px;
+            top: 42px;
+            pointer-events: none;
+        }
+        .banner-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 22px;
+            position: relative;
+            aspect-ratio: 16 / 9;
+            border: 1px solid rgba(220, 38, 38, 0.15);
+            animation: bannerRedGlow 3s infinite ease-in-out;
+        }
+
+        @keyframes bannerRedGlow {
+            0%, 100% { box-shadow: 0 10px 24px rgba(220, 38, 38, 0.35), 0 4px 10px rgba(220, 38, 38, 0.15); }
+            50% { box-shadow: 0 14px 35px rgba(220, 38, 38, 0.65), 0 6px 15px rgba(220, 38, 38, 0.3); }
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease, transform 0.5s ease;
+        }
+
+        .course-card:hover .banner-img {
+            transform: scale(1.03);
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background-color: #fee2e2;
+            color: #dc2626;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+        }
+
+        .main-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            min-height: 50px;
+        }
+
+        .feature-list {
+            margin-bottom: 25px;
+        }
+
+        .feature-item {
+            display: table;
+            width: 100%;
+            font-size: 14px;
+            color: #334155;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .icon-cell {
+            display: table-cell;
+            width: 28px;
+            vertical-align: top;
+            padding-top: 2px;
+        }
+
+        .text-cell {
+            display: table-cell;
+            vertical-align: top;
+            padding-left: 8px;
+            font-weight: 500;
+        }
+
+        .check-icon {
+            width: 18px;
+            height: 18px;
+            background-color: #fee2e2;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .check-icon svg {
+            width: 10px;
+            height: 10px;
+            fill: #dc2626;
+        }
+        .cta-button {
+            display: block;
+            width: 100%;
+            background: #dc2626;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+            animation: redButtonGlow 2.5s infinite;
+        }
+
+        @keyframes redButtonGlow {
+            0% { box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35), 0 0 0 0 rgba(220, 38, 38, 0.4); }
+            70% { box-shadow: 0 8px 30px rgba(220, 38, 38, 0.5), 0 0 0 10px rgba(220, 38, 38, 0); }
+            100% { box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35), 0 0 0 0 rgba(220, 38, 38, 0); }
+        }
+
+        .cta-button:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 32px rgba(185, 28, 28, 0.6);
+            animation: none; 
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 30%;
+            height: 200%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(25deg);
+            animation: shineEffect 4s infinite linear;
+        }
+
+        @keyframes shineEffect {
+            0% { left: -60%; }
+            15% { left: 140%; }
+            100% { left: 140%; }
+        }
+
+        /* 🔵 ব্যবসায় শিক্ষা কার্ডের এক্সক্লুসিভ রয়্যাল ব্লু থিম */
+        .biz-card .top-section-title { color: #0284c7; }
+        .biz-card .course-select { border-color: #38bdf8; animation: dropdownBlueGlow 2.5s infinite ease-in-out; }
+        .biz-card .dropdown-container::after { color: #0284c7; }
+        .biz-card .banner-container { border-color: rgba(2, 132, 199, 0.15); animation: bannerBlueGlow 3s infinite ease-in-out; }
+        .biz-card .badge-tag { background-color: #e0f2fe; color: #0284c7; }
+        .biz-card .check-icon { background-color: #e0f2fe; }
+        .biz-card .check-icon svg { fill: #0284c7; }
+        .biz-card .cta-button { background: #0284c7; box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35); animation: blueButtonGlow 2.5s infinite; }
+
+        @keyframes dropdownBlueGlow {
+            0%, 100% { box-shadow: 0 0 8px rgba(2, 132, 199, 0.25); border-color: #38bdf8; }
+            50% { box-shadow: 0 0 18px rgba(2, 132, 199, 0.55); border-color: #0284c7; }
+        }
+        @keyframes bannerBlueGlow {
+            0%, 100% { box-shadow: 0 10px 24px rgba(2, 132, 199, 0.35); }
+            50% { box-shadow: 0 14px 35px rgba(2, 132, 199, 0.65); }
+        }
+        @keyframes blueButtonGlow {
+            0% { box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35), 0 0 0 0 rgba(2, 132, 199, 0.4); }
+            70% { box-shadow: 0 8px 30px rgba(2, 132, 199, 0.5), 0 0 0 10px rgba(2, 132, 199, 0); }
+            100% { box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35), 0 0 0 0 rgba(2, 132, 199, 0); }
+        }
+        .biz-card .cta-button:hover { background: #0369a1; box-shadow: 0 10px 32px rgba(3, 105, 161, 0.6); }
+        /* ⚙️ পার্ট-০৫ প্রিমিয়াম ফিচার সেকশন স্টাইল */
+        .features-container {
+            background-color: #e3f2fd;
+            border-radius: 24px;
+            padding: 50px 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+        }
+
+        .main-heading {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 45px;
+            letter-spacing: -0.5px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px 40px;
+        }
+
+        .feature-card-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 26px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-card-item:hover {
+            background: #ffffff;
+            border-color: rgba(124, 58, 237, 0.3);
+            transform: scale(1.03) translateY(-4px);
+            box-shadow: 0 20px 38px rgba(124, 58, 237, 0.15), 0 4px 18px rgba(6, 182, 212, 0.1), 0 0 0 1px rgba(124, 58, 237, 0.1);
+        }
+
+        .icon-box {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card-item:hover .icon-box {
+            transform: scale(1.1);
+        }
+
+        .icon-box svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* 💬 পার্ট-০৬ ও ০৭: স্লাইডার ও রিভিউ স্টাইল */
+        .header-area { text-align: center; margin-bottom: 25px; margin-top: 20px; }
+        .stars { color: #ff9c00; font-size: 24px; margin-bottom: 5px; letter-spacing: 3px; }
+        .marquee-header-title { color: #d9531e; font-size: 24px; font-weight: bold; margin-bottom: 5px; text-align: center; }
+        .sub-title { color: #0d233a; font-size: 20px; font-weight: bold; margin-bottom: 25px; text-align: center; }
+        
+        .scroll-container { 
+            width: 100%; 
+            overflow-x: hidden; 
+            white-space: nowrap; 
+            padding: 15px 20px;
+            cursor: grab;
+            touch-action: pan-y;
+            -webkit-overflow-scrolling: touch;
+        }
+        .scroll-container:active { cursor: grabbing; }
+        .video-card, .text-card { 
+            width: 300px; 
+            background: #f8fafc; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 16px; 
+            padding: 14px; 
+            margin-right: 20px; 
+            display: inline-block; 
+            vertical-align: top; 
+            white-space: normal; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            user-select: none;
+        }
+        
+        .text-card { height: 260px; display: inline-flex; flex-direction: column; justify-content: space-between; background: #f1f5f9; }
+        .video-player-box { position: relative; width: 100%; height: 250px; border-radius: 12px; overflow: hidden; margin-bottom: 12px; background: #cbd5e1; }
+        .video-player-box::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: 2; }
+        .video-player-box iframe { width: 100%; height: 100%; border: none; position: relative; z-index: 1; }
+        .video-player-box:hover::after { pointer-events: none; }
+        
+        .review-co
