@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSC 2028 Complete Online Batch Landing Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: #1e293b;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* কমন কন্টেইনার লেআউট */
+        .section-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 15px;
+        }
+
+        /* পার্ট-০১ গ্রিড লেআউট (Hero Section) */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            justify-content: center;
+            align-items: start;
+        }
+
+        /* 🔴 পার্ট-০১: সায়েন্স/সাধারণ কার্ড স্টাইল */
+        .course-card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+            width: 100%;
+            padding: 25px;
+            border: 1px solid #f1f5f9;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.08), 0 0 30px rgba(220, 38, 38, 0.05);
+        }
+
+        .top-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .dropdown-container {
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .dropdown-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .course-select {
+            width: 100%;
+            padding: 13px 16px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            background-color: #ffffff;
+            border: 2px solid #f87171;
+            border-radius: 12px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+            appearance: none;
+            -webkit-appearance: none;
+            animation: dropdownRedGlow 2.5s infinite ease-in-out;
+        }
+
+        @keyframes dropdownRedGlow {
+            0%, 100% {
+                box-shadow: 0 0 8px rgba(220, 38, 38, 0.25), inset 0 0 4px rgba(220, 38, 38, 0.05);
+                border-color: #f87171;
+            }
+            50% {
+                box-shadow: 0 0 18px rgba(220, 38, 38, 0.55), 0 0 10px rgba(220, 38, 38, 0.2);
+                border-color: #dc2626;
+            }
+        }
+
+        .dropdown-container::after {
+            content: '▼';
+            font-size: 11px;
+            color: #dc2626;
+            position: absolute;
+            right: 16px;
+            top: 42px;
+            pointer-events: none;
+        }
+        .banner-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 22px;
+            position: relative;
+            aspect-ratio: 16 / 9;
+            border: 1px solid rgba(220, 38, 38, 0.15);
+            animation: bannerRedGlow 3s infinite ease-in-out;
+        }
+
+        @keyframes bannerRedGlow {
+            0%, 100% { box-shadow: 0 10px 24px rgba(220, 38, 38, 0.35), 0 4px 10px rgba(220, 38, 38, 0.15); }
+            50% { box-shadow: 0 14px 35px rgba(220, 38, 38, 0.65), 0 6px 15px rgba(220, 38, 38, 0.3); }
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease, transform 0.5s ease;
+        }
+
+        .course-card:hover .banner-img {
+            transform: scale(1.03);
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background-color: #fee2e2;
+            color: #dc2626;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+        }
+
+        .main-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            min-height: 50px;
+        }
+
+        .feature-list {
+            margin-bottom: 25px;
+        }
+
+        .feature-item {
+            display: table;
+            width: 100%;
+            font-size: 14px;
+            color: #334155;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .icon-cell {
+            display: table-cell;
+            width: 28px;
+            vertical-align: top;
+            padding-top: 2px;
+        }
+
+        .text-cell {
+            display: table-cell;
+            vertical-align: top;
+            padding-left: 8px;
+            font-weight: 500;
+        }
+
+        .check-icon {
+            width: 18px;
+            height: 18px;
+            background-color: #fee2e2;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .check-icon svg {
+            width: 10px;
+            height: 10px;
+            fill: #dc2626;
+        }
+        .cta-button {
+            display: block;
+            width: 100%;
+            background: #dc2626;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+            animation: redButtonGlow 2.5s infinite;
+        }
+
+        @keyframes redButtonGlow {
+            0% { box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35), 0 0 0 0 rgba(220, 38, 38, 0.4); }
+            70% { box-shadow: 0 8px 30px rgba(220, 38, 38, 0.5), 0 0 0 10px rgba(220, 38, 38, 0); }
+            100% { box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35), 0 0 0 0 rgba(220, 38, 38, 0); }
+        }
+
+        .cta-button:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 32px rgba(185, 28, 28, 0.6);
+            animation: none; 
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 30%;
+            height: 200%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(25deg);
+            animation: shineEffect 4s infinite linear;
+        }
+
+        @keyframes shineEffect {
+            0% { left: -60%; }
+            15% { left: 140%; }
+            100% { left: 140%; }
+        }
+
+        /* 🔵 ব্যবসায় শিক্ষা কার্ডের এক্সক্লুসিভ রয়্যাল ব্লু থিম */
+        .biz-card .top-section-title { color: #0284c7; }
+        .biz-card .course-select { border-color: #38bdf8; animation: dropdownBlueGlow 2.5s infinite ease-in-out; }
+        .biz-card .dropdown-container::after { color: #0284c7; }
+        .biz-card .banner-container { border-color: rgba(2, 132, 199, 0.15); animation: bannerBlueGlow 3s infinite ease-in-out; }
+        .biz-card .badge-tag { background-color: #e0f2fe; color: #0284c7; }
+        .biz-card .check-icon { background-color: #e0f2fe; }
+        .biz-card .check-icon svg { fill: #0284c7; }
+        .biz-card .cta-button { background: #0284c7; box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35); animation: blueButtonGlow 2.5s infinite; }
+
+        @keyframes dropdownBlueGlow {
+            0%, 100% { box-shadow: 0 0 8px rgba(2, 132, 199, 0.25); border-color: #38bdf8; }
+            50% { box-shadow: 0 0 18px rgba(2, 132, 199, 0.55); border-color: #0284c7; }
+        }
+        @keyframes bannerBlueGlow {
+            0%, 100% { box-shadow: 0 10px 24px rgba(2, 132, 199, 0.35); }
+            50% { box-shadow: 0 14px 35px rgba(2, 132, 199, 0.65); }
+        }
+        @keyframes blueButtonGlow {
+            0% { box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35), 0 0 0 0 rgba(2, 132, 199, 0.4); }
+            70% { box-shadow: 0 8px 30px rgba(2, 132, 199, 0.5), 0 0 0 10px rgba(2, 132, 199, 0); }
+            100% { box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35), 0 0 0 0 rgba(2, 132, 199, 0); }
+        }
+        .biz-card .cta-button:hover { background: #0369a1; box-shadow: 0 10px 32px rgba(3, 105, 161, 0.6); }
+        /* ⚙️ পার্ট-০৫ প্রিমিয়াম ফিচার সেকশন স্টাইল */
+        .features-container {
+            background-color: #e3f2fd;
+            border-radius: 24px;
+            padding: 50px 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+        }
+
+        .main-heading {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 45px;
+            letter-spacing: -0.5px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px 40px;
+        }
+
+        .feature-card-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 26px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-card-item:hover {
+            background: #ffffff;
+            border-color: rgba(124, 58, 237, 0.3);
+            transform: scale(1.03) translateY(-4px);
+            box-shadow: 0 20px 38px rgba(124, 58, 237, 0.15), 0 4px 18px rgba(6, 182, 212, 0.1), 0 0 0 1px rgba(124, 58, 237, 0.1);
+        }
+
+        .icon-box {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card-item:hover .icon-box {
+            transform: scale(1.1);
+        }
+
+        .icon-box svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* 💬 পার্ট-০৬ ও ০৭: স্লাইডার ও রিভিউ স্টাইল */
+        .header-area { text-align: center; margin-bottom: 25px; margin-top: 20px; }
+        .stars { color: #ff9c00; font-size: 24px; margin-bottom: 5px; letter-spacing: 3px; }
+        .marquee-header-title { color: #d9531e; font-size: 24px; font-weight: bold; margin-bottom: 5px; text-align: center; }
+        .sub-title { color: #0d233a; font-size: 20px; font-weight: bold; margin-bottom: 25px; text-align: center; }
+        
+        .scroll-container { 
+            width: 100%; 
+            overflow-x: hidden; 
+            white-space: nowrap; 
+            padding: 15px 20px;
+            cursor: grab;
+            touch-action: pan-y;
+            -webkit-overflow-scrolling: touch;
+        }
+        .scroll-container:active { cursor: grabbing; }
+        .video-card, .text-card { 
+            width: 300px; 
+            background: #f8fafc; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 16px; 
+            padding: 14px; 
+            margin-right: 20px; 
+            display: inline-block; 
+            vertical-align: top; 
+            white-space: normal; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            user-select: none;
+        }
+        
+        .text-card { height: 260px; display: inline-flex; flex-direction: column; justify-content: space-between; background: #f1f5f9; }
+        .video-player-box { position: relative; width: 100%; height: 250px; border-radius: 12px; overflow: hidden; margin-bottom: 12px; background: #cbd5e1; }
+        .video-player-box::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: 2; }
+        .video-player-box iframe { width: 100%; height: 100%; border: none; position: relative; z-index: 1; }
+        .video-player-box:hover::after { pointer-events: none; }
+        
+        .review-content { font-size: 13px; color: #334155; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; text-align: justify; font-weight: 500; }
+        .user-info-row { display: flex; align-items: center; gap: 10px; margin-top: auto; pointer-events: none; }
+        .avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1.5px solid #7c3aed; background: #e2e8f0; }
+        .info-text { display: flex; flex-direction: column; overflow: hidden; }
+        .user-name { font-size: 13.5px; font-weight: 700; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .user-sub { font-size: 11px; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .video-card:hover, .text-card:hover { transform: translateY(-3px); }
+
+        /* ফটো গ্যালারি স্লাইডার */
+        .marquee-container { overflow: hidden; width: 100%; margin: 0 auto; white-space: nowrap; }
+        .marquee-track { display: flex; width: max-content; }
+        .marquee-track:hover { animation-play-state: paused; }
+        .track-top { animation: scroll-left 25s linear infinite; margin-bottom: 20px; }
+        .track-bottom { animation: scroll-right 25s linear infinite; }
+        .photo-item { width: 320px; margin: 0 15px; flex-shrink: 0; }
+        .photo-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes scroll-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+        /* ❓ FAQ সেকশন */
+        .faq-section { background-color: #e3f2fd; border-radius: 24px; padding: 50px 30px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04); }
+        .faq-section h2 { text-align: center; font-size: 32px; font-weight: 800; color: #0f172a; margin-bottom: 45px; }
+        .faq-item { margin-bottom: 20px; background: rgba(255, 255, 255, 0.6); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.8); overflow: hidden; transition: all 0.4s ease; }
+        .faq-item:hover { background: #ffffff; border-color: rgba(124, 58, 237, 0.3); transform: scale(1.015) translateY(-2px); box-shadow: 0 20px 38px rgba(124, 58, 237, 0.12); }
+        .faq-question { padding: 22px 26px; font-size: 18px; font-weight: 700; color: #0f172a; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+        .faq-question::after { content: '＋'; font-size: 22px; color: #1e90ff; font-weight: bold; transition: all 0.4s ease; }
+        .faq-item.active .faq-question::after { transform: rotate(45deg); color: #ef4444; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; background: rgba(255, 255, 255, 0.3); }
+        .faq-answer-content { padding: 22px 26px; font-size: 15px; color: #475569; line-height: 1.7; font-weight: 500; border-top: 1px solid rgba(255, 255, 255, 0.6); }
+        .highlight-green { color: #10b981; font-weight: 700; }
+
+        /* 📞 স্টুডেন্ট অ্যাডভাইজার */
+        .advisor-outer { display: flex; justify-content: center; width: 100%; margin: 40px 0; }
+        .faq-wrapper { width: 100%; max-width: 450px; background: #ffffff; border-radius: 24px; padding: 24px 18px; border: 1px solid #eef2f5; animation: containerGlow 4s infinite ease-in-out; }
+        @keyframes containerGlow { 0%, 100% { box-shadow: 0 10px 30px rgba(0,0,0,0.04); } 50% { box-shadow: 0 15px 35px rgba(0,0,0,0.06), 0 0 20px rgba(124,58,237,0.2); } }
+        .advisor-container { background: linear-gradient(185deg, #f8fafc 0%, #f1f5f9 100%); border-radius: 18px; padding: 24px 16px; text-align: center; border: 1px solid #e2e8f0; }
+        .phone-icon-box { width: 42px; height: 42px; background: #ffffff; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 12px; border: 1px solid #e2e8f0; }
+        .phone-icon-box svg { width: 20px; height: 20px; fill: #7c3aed; }
+        .advisor-title { font-size: 18px; font-weight: 800; color: #dc2626; margin-bottom: 10px; }
+        .advisor-subtitle { font-size: 14.5px; font-weight: 700; color: #1e293b; margin-bottom: 18px; }
+        .call-button { display: inline-flex; align-items: center; justify-content: center; width: 100%; background: linear-gradient(135deg, #059669 0%, #047857 100%); color: #ffffff; text-decoration: none; padding: 13px 20px; font-size: 15px; font-weight: 700; border-radius: 12px; animation: greenButtonGlow 2.5s infinite; }
+        @keyframes greenButtonGlow { 0%, 100% { box-shadow: 0 4px 12px rgba(5,150,105,0.3); } 70% { box-shadow: 0 4px 20px rgba(5,150,105,0.5), 0 0 0 10px rgba(5,150,105,0); } }
+        .call-button:hover { background: linear-gradient(135deg, #047857 0%, #065f46 100%); transform: translateY(-1px); animation: none; }
+
+        /* রেসপন্সিভ মিডিয়া কোয়েরি */
+        @media (max-width: 768px) {
+            .features-grid { grid-template-columns: 1fr; gap: 24px; }
+            .main-heading, .faq-section h2 { font-size: 24px; margin-bottom: 30px; }
+            .features-container, .faq-section { padding: 30px 15px; }
+            .feature-card-item { padding: 20px; }
+            .feature-card-item:hover { transform: scale(1.01) translateY(-2px); }
+            .faq-question, .faq-answer-content { padding: 18px 20px; font-size: 14px; }
+            .faq-item:hover { transform: scale(1.005) translateY(-1px); }
+        }
+    </style>
+</head>
+<body>
+
+
+    
+    <div class="section-wrapper">
+        <div class="hero-grid">
+            
+            <div class="course-card">
+                
+        
+
+
+
+            
+            
+
+                
+                
+                    
+                    
+                
+        </div>
+    </div>
+
+    <div class="section-wrapper">
+        <div class="features-container">
+            <h2 class="main-heading">কোর্স গুলো যেভাবে সাজানো হয়েছে</h2>
+            <div class="features-grid">
+                
+                <div class="feature-card-item">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="#ef4444"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-12c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg></div>
+                    <div class="feature-title">...বেসিক ক্লিয়ার</div>
+                    <div class="feature-desc">ক্লাসে টিচার প্রতিটি টপিক সহজে বুঝিয়ে স্টুডেন্ট এর বেসিক স্ট্রং করে দিবেন</div>
+                </div>
+
+                <div class="feature-card-item">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="#1e90ff"><path d="M12 2C6.48 2 2 6
