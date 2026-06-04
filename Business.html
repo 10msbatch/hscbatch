@@ -8,7 +8,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Animated Google Sites Header</title>
+    <style> 
+    /* কার্ডের মূল কন্টেইনার (রেসপনসিভ গ্রিড) */
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px; /* কার্ডগুলোর মাঝের দূরত্ব */
+        max-width: 1400px;
+        margin: 40px auto; /* উপরে ও নিচে ৪০ পিক্সেল মার্জিন */
+        padding: 0 20px;
+        align-items: start;
+    }
+
+    /* কমন কার্ড স্টাইল */
+    .course-card {
+        background: #ffffff;
+        border-radius: 24px;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+        width: 100%;
+        padding: 25px;
+        border: 1px solid #f1f5f9;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        position: relative;
+    }
+
+    /* কার্ড ১ স্টাইল (লাল থিম / আবশ্যিক বিষয়) */
+    .card-red:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(220, 38, 38, 0.08), 0 0 30px rgba(220, 38, 38, 0.05);
+    }
+    .text-red { color: #dc2626; }
+    .select-red { border: 2px solid #f87171; animation: dropdownRedGlow 2.5s infinite ease-in-out; }
+    @keyframes dropdownRedGlow {
+        0%, 100% { box-shadow: 0 0 8px rgba(220, 38, 38, 0.25); border-color: #f87171; }
+        50% { box-shadow: 0 0 18px rgba(220, 38, 38, 0.55); border-color: #dc2626; }
+    }
+    .banner-red { border: 1px solid rgba(220, 38, 38, 0.15); animation: bannerDeepRedGlow 3s infinite ease-in-out; }
+    @keyframes bannerDeepRedGlow { 0%, 100% { box-shadow: 0 10px 24px rgba(220, 38, 38, 0.35); } 50% { box-shadow: 0 14px 35px rgba(220, 38, 38, 0.65); } }
+    .badge-red { background-color: #fee2e2; color: #dc2626; }
+    .icon-red { background-color: #fee2e2; }
+    .icon-red svg { fill: #dc2626; }
+    .btn-red { background: #dc2626; box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35); animation: buttonRedGlow 2.5s infinite; }
+    @keyframes buttonRedGlow {
+        0% { box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35), 0 0 0 0 rgba(220, 38, 38, 0.4); }
+        70% { box-shadow: 0 8px 30px rgba(220, 38, 38, 0.5), 0 0 0 10px rgba(220, 38, 38, 0); }
+        100% { box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35), 0 0 0 0 rgba(220, 38, 38, 0); }
+    }
+    .btn-red:hover { background: #b91c1c; }
+
+    /* কার্ড ২ ও ৩ স্টাইল (ব্লু থিম / ব্যবসায় শিক্ষা) */
+    .card-blue:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(2, 132, 199, 0.08), 0 0 30px rgba(2, 132, 199, 0.05);
+    }
+    .text-blue { color: #0284c7; }
+    .card-header-title { font-size: 21px; font-weight: 700; color: #1e293b; margin-bottom: 15px; line-height: 1.4; animation: textNeonGlow 2.5s infinite ease-in-out; }
+    @keyframes textNeonGlow { 0%, 100% { text-shadow: 0 0 4px rgba(2, 132, 199, 0.1); } 50% { text-shadow: 0 0 12px rgba(2, 132, 199, 0.35); } }
+    .select-blue { border: 2px solid #38bdf8; animation: dropdownPulseGlow 2.5s infinite ease-in-out; }
+    @keyframes dropdownPulseGlow { 0%, 100% { box-shadow: 0 0 8px rgba(2, 132, 199, 0.25); border-color: #38bdf8; } 50% { box-shadow: 0 0 18px rgba(2, 132, 199, 0.55); border-color: #0284c7; } }
+    .banner-blue { border: 1px solid rgba(2, 132, 199, 0.15); animation: bannerDeepGlow 3s infinite ease-in-out; }
+    @keyframes bannerDeepGlow { 0%, 100% { box-shadow: 0 10px 24px rgba(2, 132, 199, 0.35); } 50% { box-shadow: 0 14px 35px rgba(2, 132, 199, 0.65); } }
+    .badge-blue { background-color: #e0f2fe; color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.15); }
+    .icon-blue { background-color: #e0f2fe; }
+    .icon-blue svg { fill: #0284c7; }
+    .btn-blue { background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%); animation: blueButtonGlow 2s infinite; }
+    @keyframes blueButtonGlow { 0% { box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4), 0 0 0 0 rgba(2, 132, 199, 0.4); } 70% { box-shadow: 0 4px 25px rgba(2, 132, 199, 0.6), 0 0 0 14px rgba(2, 132, 199, 0); } 100% { box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4), 0 0 0 0 rgba(2, 132, 199, 0); } }
+    .btn-blue:hover { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); }
+
+    /* কমন এলিমেন্ট স্টাইল */
+    .top-section-title { font-size: 14px; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.3px; }
+    .dropdown-container { margin-bottom: 22px; position: relative; }
+    .dropdown-label { font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 6px; display: block; }
+    .course-select, .cycle-dropdown { width: 100%; padding: 13px 16px; font-size: 15px; font-weight: 600; color: #1e293b; background-color: #ffffff; border-radius: 12px; cursor: pointer; outline: none; appearance: none; -webkit-appearance: none; }
+    .dropdown-container::after { content: '▼'; font-size: 11px; position: absolute; right: 16px; top: 42px; pointer-events: none; }
+    .dropdown-container-blue::after { color: #0284c7; }
+    .dropdown-container-red::after { color: #dc2626; }
+    .banner-container { width: 100%; border-radius: 16px; overflow: hidden; margin-bottom: 22px; position: relative; aspect-ratio: 16 / 9; }
+    .slider-wrapper { display: flex; width: 100%; height: 100%; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .banner-img { width: 100%; height: 100%; object-fit: cover; display: block; flex-shrink: 0; transition: transform 0.5s ease; }
+    .course-card:hover .banner-img { transform: scale(1.03); }
+    .badge-tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 10px; margin-bottom: 16px; }
+    .main-title { font-size: 18px; font-weight: 700; color: #0f172a; line-height: 1.4; margin-bottom: 20px; min-height: 50px; }
+    .feature-list { margin-bottom: 25px; }
+    .feature-item { display: table; width: 100%; font-size: 14px; color: #334155; margin-bottom: 12px; line-height: 1.4; }
+    .icon-cell { display: table-cell; width: 28px; vertical-align: top; padding-top: 2px; }
+    .text-cell { display: table-cell; vertical-align: top; padding-left: 8px; font-weight: 500; }
+    .check-icon { width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+    .cta-button { display: block; width: 100%; color: #ffffff; text-align: center; padding: 15px 20px; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 14px; transition: all 0.3s ease; position: relative; overflow: hidden; cursor: pointer; border: none; }
+    .cta-button::after { content: ''; position: absolute; top: -50%; left: -60%; width: 30%; height: 200%; background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%); transform: rotate(25deg); animation: shineEffect 4s infinite linear; }
+    @keyframes shineEffect { 0% { left: -60%; } 15% { left: 140%; } 100% { left: 140%; } }
+    .cycle-dropdown { background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230284c7' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 15px center; background-size: 16px; background-color: #f8fafc; border: 2px solid #e2e8f0; }
+    .cycle-dropdown:focus { border-color: #0284c7; background-color: #ffffff; box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15); }
+</style>
+    
     <style>
+
+        
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         
         /* সম্পূর্ণ সাদা ব্যাকগ্রাউন্ড ও সফট গ্লো এরিয়া */
@@ -139,7 +234,360 @@
     </style>
 </head>
 <body>
+<div class="cards-container">
 
+    <div class="course-card card-red">
+        <div class="top-section-title text-red">সব বিভাগের জন্য (বিজ্ঞান/মানবিক/ব্যবসায় শিক্ষা)</div>
+        <div class="dropdown-container dropdown-container-red">
+            <label class="dropdown-label">আপনার আবশ্যিক বিষয়টি নির্বাচন করুন</label>
+            <select id="courseSelector1" class="course-select select-red" onchange="updateCourseCard1()">
+                <option value="allSubject">বাংলা, ইংরেজি ও আইসিটি (Combined)</option>
+                <option value="bangla">বাংলা ১ম ও ২য় পত্র</option>
+                <option value="english"> ইংরেজি ১ম ও ২য় পত্র</option>
+                <option value="ict">আইসিটি (ICT)</option>
+            </select>
+        </div>
+        <div class="banner-container banner-red">
+            <div id="sliderWrapper" class="slider-wrapper"></div>
+        </div>
+        <div class="badge-tag badge-red">Online Batch</div>
+        <div id="mainTitle1" class="main-title">HSC 28 অনলাইন ব্যাচ - বাংলা, ইংরেজি ও আইসিটি সম্পূর্ণ কোর্স</div>
+        <div class="feature-list">
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-red"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div id="card1_f1" class="text-cell">৫টি বিষয় কভারেজ (বাংলা ১ম-২য়, ইংরেজি ১ম-২য়, ICT)</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-red"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div id="card1_f2" class="text-cell">বেসিক Strong + CQ/MCQ ফুল প্রস্তুতি (বোর্ড-প্যাটার্নে প্র্যাকটিস ফোকাস)</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-red"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div id="card1_f3" class="text-cell">সপ্তাহে ৬ দিন লাইভ ক্লাস ও স্মার্ট রিভিশন মাস্টারবুক</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-red"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div id="card1_f4" class="text-cell">নিয়মিত ডেইলি ও মান্থলি MCQ এক্সাম এবং Q&A Sessions</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-red"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">ডেডিকেটেড ফেসবুক গ্রুপে 24/7 ইনস্ট্যান্ট কনফিউশন ক্লিয়ারেন্স</div></div>
+        </div>
+        <button id="ctaButton1" onclick="handleButtonClick1()" class="cta-button btn-red">আরো বিস্তারিত জানুন</button>
+    </div>
+
+    <div class="course-card card-blue">
+        <div class="top-section-title text-blue">ব্যবসায় শিক্ষা (HSC 28)</div>
+        <div class="card-header-title">HSC 28 অনলাইন ব্যাচ (ফাইন্যান্স, একাউন্টিং, ম্যানেজমেন্ট, মার্কেটিং)</div>
+        <div class="banner-container banner-blue">
+            <img class="banner-img" src="https://drive.google.com/thumbnail?id=1506W1KZTL7v43hWi-LaBd4X2ixHW7WzK&sz=w800" alt="HSC 28 Business Studies Banner">
+        </div>
+        <div class="badge-tag badge-blue">Online Batch</div>
+        <div class="main-title">ফাইন্যান্স, অ্যাকাউন্টিং, ম্যানেজমেন্ট ও মার্কেটিং সম্পূর্ণ কোর্স - বেসিক টু এ প্লাস প্রস্তুতি</div>
+        <div class="dropdown-container">
+            <label class="dropdown-label" for="cycleSelect">আপনার কাঙ্ক্ষিত কোর্সটি বেছে নিন:</label>
+            <select class="cycle-dropdown" id="cycleSelect">
+                <option value="https://10ms.io/SGk3Hq">ফাইন্যান্স, একাউন্টিং, ম্যানেজমেন্ট, মার্কেটিং</option>
+                <option value="https://10ms.io/UGk3Jf">ফাইন্যান্স, একাউন্টিং, ম্যানেজমেন্ট, মার্কেটিং + BEI</option>
+            </select>
+        </div>
+        <div class="feature-list">
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">Board-based A+ প্রস্তুতি লাইভ ক্লাস</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">ইন্টারেক্টিভ লাইভ ক্লাস ও মাস্টারবুক</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">HSC27 ব্যাচের আর্কাইভ ক্লাস দিয়ে স্মার্ট রিভিশন</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">AI Doubt Solver (TenTen) ও রেগুলার এক্সাম সুবিধা</div></div>
+        </div>
+        <button onclick="goToSelectedCycle(event)" class="cta-button btn-blue">আরো বিস্তারিত জানুন</button>
+    </div>
+
+    <div class="course-card card-blue">
+        <div class="top-section-title text-blue">ব্যবসায় বিভাগ (HSC 28)</div>
+        <div class="dropdown-container dropdown-container-blue">
+            <label class="dropdown-label">আপনার বিষয়টি নির্বাচন করুন</label>
+            <select id="courseSelector3" class="course-select select-blue" onchange="updateCourseCard3()">
+                <option value="marketing">মার্কেটিং (Marketing)</option>
+                <option value="management">م্যানেজমেন্ট (Management)</option>
+                <option value="accounting">একাউন্টিং (Accounting)</option>
+                <option value="finance">ফাইন্যান্স (Finance)</option>
+            </select>
+        </div>
+        <div class="banner-container banner-blue">
+            <img id="bannerImg3" class="banner-img" src="https://drive.google.com/thumbnail?id=1TDohVg84SNVyFFPTP7ny_1GGSCGCUyei&sz=w800" alt="HSC 28 Business Studies Banner">
+        </div>
+        <div class="badge-tag badge-blue">Online Batch</div>
+        <div id="mainTitle3" class="main-title">HSC 28 অনলাইন ব্যাচ - মার্কেটিং সম্পূর্ণ কোর্স</div>
+        <div class="feature-list">
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div id="card3_f1" class="text-cell">মার্কেটিং ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">বেসিক Strong + CQ/MCQ ফুল প্রস্তুতি</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">লাইভ ক্লাস + HSC27 আর্কাইভ ক্লাস দিয়ে স্মার্ট রিভিশন</div></div>
+            <div class="feature-item" id="fbGroupRow3"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">ডেডিকেটেড ফেসবুক গ্রুপে 24/7 কনফিউশন ক্লিয়ার</div></div>
+        </div>
+        <button id="ctaButton3" onclick="handleButtonClick3()" class="cta-button btn-blue">আরো বিস্তারিত জানুন</button>
+    </div>
+
+</div>
+
+<script>
+    const courseData1 = {
+        allSubject: { title: "HSC 28 অনলাইন ব্যাচ - বাংলা, ইংরেজি ও আইসিটি সম্পূর্ণ কোর্স", f1: "৫টি বিষয় কভারেজ (বাংলা ১ম-২য়, ইংরেজি ১ম-২য়, ICT)", f2: "বাংলা, ইংরেজি, ICT বিষয়ের Board-based A+ প্রস্তুতি", f3: "সপ্তাহে ৬ দিন স্পেশাল লাইভ ক্লাস", f4: "ডেইলি ও মান্থলি MCQ এক্সাম এবং ৩টি আলাদা ফেসবুক গ্রুপ", images: ["https://drive.google.com/thumbnail?id=1kqjslwpBqv8XM7w2TFEnOuUhh3BBY3R6&sz=w800", "https://drive.google.com/thumbnail?id=1l5_GijQnMvuVnVcercR9KDUPLbzU-yeY&sz=w800"], link: "https://10ms.io/1GubkW" },
+        bangla: { title: "HSC 28 অনলাইন ব্যাচ - বাংলা ১ম ও ২য় পত্র সম্পূর্ণ কোর্স", f1: "বাংলা ১ম ও ২য় পত্রের Board-based A+ সম্পূর্ণ প্রস্তুতি", f2: "বেসিক Strong + CQ/MCQ ফুল প্রস্তুতি (বোর্ড-প্যাটার্ন ফোকাস)", f3: "লাইভ ক্লাস + HSC27 আর্কাইভ ক্লাস দিয়ে স্মার্ট রিভিশন ও মাস্টারবুক", f4: "ডেইলি ও মান্থলি MCQ এক্সাম এবং Weekly Q&A Sessions", images: ["https://drive.google.com/thumbnail?id=1cpiXuwMaIQxtwhCRiEfusiEHpOIAwz6C&sz=w800"], link: "https://10ms.io/QGiOTU" },
+        english: { title: "HSC 28 অনলাইন ব্যাচ - ইংরেজি ১ম ও ২য় পত্র সম্পূর্ণ কোর্স", f1: "ইংরেজি ১ম ও ২য় পত্রের Board-based A+ সম্পূর্ণ প্রস্তুতি", f2: "বেসিক Strong + CQ/MCQ ফুল প্রস্তুতি (বোর্ড-প্যাটার্ন ফোকাস)", f3: "লাইভ ক্লাস + HSC27 আর্কাইভ ক্লাস দিয়ে স্মার্ট রিভিশন ও মাস্টারবুক", f4: "ডেইলি ও মান্থলি MCQ এক্সাম এবং Weekly Q&A Sessions", images: ["https://drive.google.com/thumbnail?id=1wdhr6tDSM9ukoWW2hMEiImm71lXPM2Jx&sz=w800"], link: "https://10ms.io/XGiODi" },
+        ict: { title: "HSC 28 অনলাইন ব্যাচ - আইসিটি (ICT) সম্পূর্ণ কোর্স", f1: "তথ্য ও যোগাযোগ প্রযুক্তি (ICT) Board-based A+ প্রস্তুতি", f2: "বেসিক Strong + CQ/MCQ ফুল প্রস্তুতি (বোর্ড-প্যাটার্ন ফোকাস)", f3: "লাইভ ক্লাস + HSC27 আর্কাইভ ক্লাস দিয়ে স্মার্ট রিভিশন ও মাস্টারবুক", f4: "ডেইলি ও মান্থলি MCQ এক্সাম এবং Weekly Q&A Sessions", images: ["https://drive.google.com/thumbnail?id=1Pwdfb8lPbXO_fab_V5qI8yn-rH_4rUuc&sz=w800"], link: "https://10ms.io/hGg5ou" }
+    };
+
+    let currentLink1 = courseData1.allSubject.link;
+    let slideInterval = null;
+    let currentSlideIndex = 0;
+
+    function setupSlider(imageArray) {
+        const wrapper = document.getElementById('sliderWrapper');
+        if(!wrapper) return;
+        clearInterval(slideInterval);
+        wrapper.innerHTML = '';
+        wrapper.style.transform = 'translateX(0%)';
+        currentSlideIndex = 0;
+
+        imageArray.forEach(imgUrl => {
+            const img = document.createElement('img');
+            img.src = imgUrl;
+            img.className = 'banner-img';
+            wrapper.appendChild(img);
+        });
+
+        if (imageArray.length > 1) {
+            slideInterval = setInterval(() => {
+                currentSlideIndex = (currentSlideIndex + 1) % imageArray.length;
+                wrapper.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            }, 3000);
+        }
+    }
+
+    function updateCourseCard1() {
+        const selector = document.getElementById('courseSelector1');
+        const data = courseData1[selector.value];
+        currentLink1 = data.link;
+        document.getElementById('mainTitle1').innerText = data.title;
+        document.getElementById('card1_f1').innerText = data.f1;
+        document.getElementById('card1_f2').innerText = data.f2;
+        document.getElementById('card1_f3').innerText = data.f3;
+        document.getElementById('card1_f4').innerText = data.f4;
+        setupSlider(data.images);
+    }
+
+    function handleButtonClick1() { redirectUrl(currentLink1); }
+    function goToSelectedCycle(event) { var selectedUrl = document.getElementById("cycleSelect").value; redirectUrl(selectedUrl, event); }
+
+    const courseData3 = {
+        marketing: { title: "HSC 28 অনলাইন ব্যাচ - মার্কেটিং সম্পূর্ণ কোর্স", feature1: "মার্কেটিং ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি", hasFb: true, image: "https://drive.google.com/thumbnail?id=1TDohVg84SNVyFFPTP7ny_1GGSCGCUyei&sz=w800", link: "https://10ms.io/rGlPDj" },
+        management: { title: "HSC 28 অনলাইন ব্যাচ - ম্যানেজমেন্ট সম্পূর্ণ কোর্স", feature1: "ম্যানেজমেন্ট ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি", hasFb: true, image: "https://drive.google.com/thumbnail?id=1wT3CSuo_WiCaY11KGdxtUCb-iHntNSQb&sz=w800", link: "https://10ms.io/2GlPZz" },
+        accounting: { title: "HSC 28 অনলাইন ব্যাচ - একাউন্टिंग সম্পূর্ণ কোর্স", feature1: "একাউন্टिंग ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি", hasFb: false, image: "https://drive.google.com/thumbnail?id=1PGpizM_judtFhzQSNISgER7WuPYZJobo&sz=w800", link: "https://10ms.io/DGlPBA" },
+        finance: { title: "HSC 28 অনলাইন ব্যাচ - ফাইন্যান্স সম্পূর্ণ কোর্স", feature1: "ফাইন্যান্স ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি", hasFb: false, image: "https://drive.google.com/thumbnail?id=1H9uewLDazejvK3hGU9F17G3y0cAJxgje&sz=w800", link: "https://10ms.io/xGlP3v" }
+    };
+
+    let currentLink3 = courseData3.marketing.link;
+
+    function updateCourseCard3() {
+        const selector = document.getElementById('courseSelector3');
+        const data = courseData3[selector.value];
+        currentLink3 = data.link;
+        document.getElementById('mainTitle3').innerText = data.title;
+        document.getElementById('card3_f1').innerText = data.feature1;
+        
+        const fbRow = document.getElementById('fbGroupRow3');
+        fbRow.style.display = data.hasFb ? 'table' : 'none';
+        
+        const imgElement = document.getElementById('bannerImg3');
+        imgElement.style.opacity = '0.3';
+        setTimeout(() => {
+            imgElement.src = data.image;
+            imgElement.style.opacity = '1';
+        }, 200);
+    }
+
+    function handleButtonClick3() { redirectUrl(currentLink3); }
+
+    function redirectUrl(url, event) {
+        if(event) event.preventDefault();
+        var isMessenger = /FB_IAB|FBAN|FBIOS|Messenger/i.test(navigator.userAgent);
+        if (isMessenger) {
+            try {
+                if (window.top) { window.top.location.href = url; } 
+                else { window.location.href = url; }
+            } catch (e) { window.open(url, '_blank'); }
+        } else { window.open(url, '_blank'); }
+    }
+
+    // পেজ লোড বা ডম রেডি হলে প্রথম কার্ডের স্লাইডার চালু হবে
+    document.addEventListener("DOMContentLoaded", function() {
+        if(courseData1.allSubject && courseData1.allSubject.images){
+            setupSlider(courseData1.allSubject.images);
+        }
+    });
+</script>
+
+
+    <div class="course-card card-red">
+        <div class="top-section-title text-red">সব বিভাগের জন্য (বিজ্ঞান/মানবিক/ব্যবসায় শিক্ষা)</div>
+        <div class="dropdown-container dropdown-container-red">
+            <label class="dropdown-label">আপনার আবশ্যিক বিষয়টি নির্বাচন করুন</label>
+            <select id="courseSelector1" class="course-select select-red" onchange="updateCourseCard1()">
+                <option value="allSubject">বাংলা, ইংরেজি ও আইসিটি (Combined)</option>
+                <option value="bangla">বাংলা ১ম ও ২য় পত্র</option>
+                <option value="english"> ইংরেজি ১ম ও ২য় পত্র</option>
+                <option value="ict">আইসিটি (ICT)</option>
+            </select>
+        </div>
+        <div class="banner-container banner-red">
+            <div id="sliderWrapper" class="slider-wrapper"></div>
+        </div>
+        <div class="badge-tag badge-red">Online Batch</div>
+        <div id="mainTitle1" class="main-title">HSC 28 অনলাইন ব্যাচ - বাংলা, ইংরেজি ও আইসিটি সম্পূর্ণ কোর্স</div>
+        <div class="feature-list">
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-red"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div id="card1_f1" class="text-cell">৫টি বিষয় কভারেজ (বাংলা ১ম-২য়, ইংরেজি ১ম-২য়, ICT)</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-red"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div id="card1_f2" class="text-cell">বেসিক Strong + CQ/MCQ ফুল প্রস্তুতি (বোর্ড-প্যাটার্নে প্র্যাকটিস ফোকাস)</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-red"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div id="card1_f3" class="text-cell">সপ্তাহে ৬ দিন লাইভ ক্লাস ও স্মার্ট রিভিশন মাস্টারবুক</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-red"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div id="card1_f4" class="text-cell">নিয়মিত ডেইলি ও মান্থলি MCQ এক্সাম এবং Q&A Sessions</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-red"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">ডেডিকেটেড ফেসবুক গ্রুপে 24/7 ইনস্ট্যান্ট কনফিউশন ক্লিয়ারেন্স</div></div>
+        </div>
+        <button id="ctaButton1" onclick="handleButtonClick1()" class="cta-button btn-red">আরো বিস্তারিত জানুন</button>
+    </div>
+
+    <div class="course-card card-blue">
+        <div class="top-section-title text-blue">ব্যবসায় শিক্ষা (HSC 28)</div>
+        <div class="card-header-title">HSC 28 অনলাইন ব্যাচ (ফাইন্যান্স, একাউন্টিং, ম্যানেজমেন্ট, মার্কেটিং)</div>
+        <div class="banner-container banner-blue">
+            <img class="banner-img" src="https://drive.google.com/thumbnail?id=1506W1KZTL7v43hWi-LaBd4X2ixHW7WzK&sz=w800" alt="HSC 28 Business Studies Banner">
+        </div>
+        <div class="badge-tag badge-blue">Online Batch</div>
+        <div class="main-title">ফাইন্যান্স, অ্যাকাউন্টিং, ম্যানেজমেন্ট ও মার্কেটিং সম্পূর্ণ কোর্স - বেসিক টু এ প্লাস প্রস্তুতি</div>
+        <div class="dropdown-container">
+            <label class="dropdown-label" for="cycleSelect">আপনার কাঙ্ক্ষিত কোর্সটি বেছে নিন:</label>
+            <select class="cycle-dropdown" id="cycleSelect">
+                <option value="https://10ms.io/SGk3Hq">ফাইন্যান্স, একাউন্টিং, ম্যানেজমেন্ট, মার্কেটিং</option>
+                <option value="https://10ms.io/UGk3Jf">ফাইন্যান্স, একাউন্টিং, ম্যানেজমেন্ট, মার্কেটিং + BEI</option>
+            </select>
+        </div>
+        <div class="feature-list">
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">Board-based A+ প্রস্তুতি লাইভ ক্লাস</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">ইন্টারেক্টিভ লাইভ ক্লাস ও মাস্টারবুক</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">HSC27 ব্যাচের আর্কাইভ ক্লাস দিয়ে স্মার্ট রিভিশন</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">AI Doubt Solver (TenTen) ও রেগুলার এক্সাম সুবিধা</div></div>
+        </div>
+        <button onclick="goToSelectedCycle(event)" class="cta-button btn-blue">আরো বিস্তারিত জানুন</button>
+    </div>
+
+    <div class="course-card card-blue">
+        <div class="top-section-title text-blue">ব্যবসায় বিভাগ (HSC 28)</div>
+        <div class="dropdown-container dropdown-container-blue">
+            <label class="dropdown-label">আপনার বিষয়টি নির্বাচন করুন</label>
+            <select id="courseSelector3" class="course-select select-blue" onchange="updateCourseCard3()">
+                <option value="marketing">মার্কেটিং (Marketing)</option>
+                <option value="management">م্যানেজমেন্ট (Management)</option>
+                <option value="accounting">একাউন্টিং (Accounting)</option>
+                <option value="finance">ফাইন্যান্স (Finance)</option>
+            </select>
+        </div>
+        <div class="banner-container banner-blue">
+            <img id="bannerImg3" class="banner-img" src="https://drive.google.com/thumbnail?id=1TDohVg84SNVyFFPTP7ny_1GGSCGCUyei&sz=w800" alt="HSC 28 Business Studies Banner">
+        </div>
+        <div class="badge-tag badge-blue">Online Batch</div>
+        <div id="mainTitle3" class="main-title">HSC 28 অনলাইন ব্যাচ - মার্কেটিং সম্পূর্ণ কোর্স</div>
+        <div class="feature-list">
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div id="card3_f1" class="text-cell">মার্কেটিং ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">বেসিক Strong + CQ/MCQ ফুল প্রস্তুতি</div></div>
+            <div class="feature-item"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">লাইভ ক্লাস + HSC27 আর্কাইভ ক্লাস দিয়ে স্মার্ট রিভিশন</div></div>
+            <div class="feature-item" id="fbGroupRow3"><div class="icon-cell"><div class="check-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div></div><div class="text-cell">ডেডিকেটেড ফেসবুক গ্রুপে 24/7 কনফিউশন ক্লিয়ার</div></div>
+        </div>
+        <button id="ctaButton3" onclick="handleButtonClick3()" class="cta-button btn-blue">আরো বিস্তারিত জানুন</button>
+    </div>
+
+</div>
+
+<script>
+    const courseData1 = {
+        allSubject: { title: "HSC 28 অনলাইন ব্যাচ - বাংলা, ইংরেজি ও আইসিটি সম্পূর্ণ কোর্স", f1: "৫টি বিষয় কভারেজ (বাংলা ১ম-২য়, ইংরেজি ১ম-২য়, ICT)", f2: "বাংলা, ইংরেজি, ICT বিষয়ের Board-based A+ প্রস্তুতি", f3: "সপ্তাহে ৬ দিন স্পেশাল লাইভ ক্লাস", f4: "ডেইলি ও মান্থলি MCQ এক্সাম এবং ৩টি আলাদা ফেসবুক গ্রুপ", images: ["https://drive.google.com/thumbnail?id=1kqjslwpBqv8XM7w2TFEnOuUhh3BBY3R6&sz=w800", "https://drive.google.com/thumbnail?id=1l5_GijQnMvuVnVcercR9KDUPLbzU-yeY&sz=w800"], link: "https://10ms.io/1GubkW" },
+        bangla: { title: "HSC 28 অনলাইন ব্যাচ - বাংলা ১ম ও ২য় পত্র সম্পূর্ণ কোর্স", f1: "বাংলা ১ম ও ২য় পত্রের Board-based A+ সম্পূর্ণ প্রস্তুতি", f2: "বেসিক Strong + CQ/MCQ ফুল প্রস্তুতি (বোর্ড-প্যাটার্ন ফোকাস)", f3: "লাইভ ক্লাস + HSC27 আর্কাইভ ক্লাস দিয়ে স্মার্ট রিভিশন ও মাস্টারবুক", f4: "ডেইলি ও মান্থলি MCQ এক্সাম এবং Weekly Q&A Sessions", images: ["https://drive.google.com/thumbnail?id=1cpiXuwMaIQxtwhCRiEfusiEHpOIAwz6C&sz=w800"], link: "https://10ms.io/QGiOTU" },
+        english: { title: "HSC 28 অনলাইন ব্যাচ - ইংরেজি ১ম ও ২য় পত্র সম্পূর্ণ কোর্স", f1: "ইংরেজি ১ম ও ২য় পত্রের Board-based A+ সম্পূর্ণ প্রস্তুতি", f2: "বেসিক Strong + CQ/MCQ ফুল প্রস্তুতি (বোর্ড-প্যাটার্ন ফোকাস)", f3: "লাইভ ক্লাস + HSC27 আর্কাইভ ক্লাস দিয়ে স্মার্ট রিভিশন ও মাস্টারবুক", f4: "ডেইলি ও মান্থলি MCQ এক্সাম এবং Weekly Q&A Sessions", images: ["https://drive.google.com/thumbnail?id=1wdhr6tDSM9ukoWW2hMEiImm71lXPM2Jx&sz=w800"], link: "https://10ms.io/XGiODi" },
+        ict: { title: "HSC 28 অনলাইন ব্যাচ - আইসিটি (ICT) সম্পূর্ণ কোর্স", f1: "তথ্য ও যোগাযোগ প্রযুক্তি (ICT) Board-based A+ প্রস্তুতি", f2: "বেসিক Strong + CQ/MCQ ফুল প্রস্তুতি (বোর্ড-প্যাটার্ন ফোকাস)", f3: "লাইভ ক্লাস + HSC27 আর্কাইভ ক্লাস দিয়ে স্মার্ট রিভিশন ও মাস্টারবুক", f4: "ডেইলি ও মান্থলি MCQ এক্সাম এবং Weekly Q&A Sessions", images: ["https://drive.google.com/thumbnail?id=1Pwdfb8lPbXO_fab_V5qI8yn-rH_4rUuc&sz=w800"], link: "https://10ms.io/hGg5ou" }
+    };
+
+    let currentLink1 = courseData1.allSubject.link;
+    let slideInterval = null;
+    let currentSlideIndex = 0;
+
+    function setupSlider(imageArray) {
+        const wrapper = document.getElementById('sliderWrapper');
+        if(!wrapper) return;
+        clearInterval(slideInterval);
+        wrapper.innerHTML = '';
+        wrapper.style.transform = 'translateX(0%)';
+        currentSlideIndex = 0;
+
+        imageArray.forEach(imgUrl => {
+            const img = document.createElement('img');
+            img.src = imgUrl;
+            img.className = 'banner-img';
+            wrapper.appendChild(img);
+        });
+
+        if (imageArray.length > 1) {
+            slideInterval = setInterval(() => {
+                currentSlideIndex = (currentSlideIndex + 1) % imageArray.length;
+                wrapper.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            }, 3000);
+        }
+    }
+
+    function updateCourseCard1() {
+        const selector = document.getElementById('courseSelector1');
+        const data = courseData1[selector.value];
+        currentLink1 = data.link;
+        document.getElementById('mainTitle1').innerText = data.title;
+        document.getElementById('card1_f1').innerText = data.f1;
+        document.getElementById('card1_f2').innerText = data.f2;
+        document.getElementById('card1_f3').innerText = data.f3;
+        document.getElementById('card1_f4').innerText = data.f4;
+        setupSlider(data.images);
+    }
+
+    function handleButtonClick1() { redirectUrl(currentLink1); }
+    function goToSelectedCycle(event) { var selectedUrl = document.getElementById("cycleSelect").value; redirectUrl(selectedUrl, event); }
+
+    const courseData3 = {
+        marketing: { title: "HSC 28 অনলাইন ব্যাচ - মার্কেটিং সম্পূর্ণ কোর্স", feature1: "মার্কেটিং ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি", hasFb: true, image: "https://drive.google.com/thumbnail?id=1TDohVg84SNVyFFPTP7ny_1GGSCGCUyei&sz=w800", link: "https://10ms.io/rGlPDj" },
+        management: { title: "HSC 28 অনলাইন ব্যাচ - ম্যানেজমেন্ট সম্পূর্ণ কোর্স", feature1: "ম্যানেজমেন্ট ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি", hasFb: true, image: "https://drive.google.com/thumbnail?id=1wT3CSuo_WiCaY11KGdxtUCb-iHntNSQb&sz=w800", link: "https://10ms.io/2GlPZz" },
+        accounting: { title: "HSC 28 অনলাইন ব্যাচ - একাউন্टिंग সম্পূর্ণ কোর্স", feature1: "একাউন্टिंग ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি", hasFb: false, image: "https://drive.google.com/thumbnail?id=1PGpizM_judtFhzQSNISgER7WuPYZJobo&sz=w800", link: "https://10ms.io/DGlPBA" },
+        finance: { title: "HSC 28 অনলাইন ব্যাচ - ফাইন্যান্স সম্পূর্ণ কোর্স", feature1: "ফাইন্যান্স ১ম ও ২য় পত্রের Board-based A+ প্রস্তুতি", hasFb: false, image: "https://drive.google.com/thumbnail?id=1H9uewLDazejvK3hGU9F17G3y0cAJxgje&sz=w800", link: "https://10ms.io/xGlP3v" }
+    };
+
+    let currentLink3 = courseData3.marketing.link;
+
+    function updateCourseCard3() {
+        const selector = document.getElementById('courseSelector3');
+        const data = courseData3[selector.value];
+        currentLink3 = data.link;
+        document.getElementById('mainTitle3').innerText = data.title;
+        document.getElementById('card3_f1').innerText = data.feature1;
+        
+        const fbRow = document.getElementById('fbGroupRow3');
+        fbRow.style.display = data.hasFb ? 'table' : 'none';
+        
+        const imgElement = document.getElementById('bannerImg3');
+        imgElement.style.opacity = '0.3';
+        setTimeout(() => {
+            imgElement.src = data.image;
+            imgElement.style.opacity = '1';
+        }, 200);
+    }
+
+    function handleButtonClick3() { redirectUrl(currentLink3); }
+
+    function redirectUrl(url, event) {
+        if(event) event.preventDefault();
+        var isMessenger = /FB_IAB|FBAN|FBIOS|Messenger/i.test(navigator.userAgent);
+        if (isMessenger) {
+            try {
+                if (window.top) { window.top.location.href = url; } 
+                else { window.location.href = url; }
+            } catch (e) { window.open(url, '_blank'); }
+        } else { window.open(url, '_blank'); }
+    }
+
+    // পেজ লোড বা ডম রেডি হলে প্রথম কার্ডের স্লাইডার চালু হবে
+    document.addEventListener("DOMContentLoaded", function() {
+        if(courseData1.allSubject && courseData1.allSubject.images){
+            setupSlider(courseData1.allSubject.images);
+        }
+    });
+</script>
+    
+    
     <div class="header-wrapper">
         <div class="main-title">HSC</div>
 
