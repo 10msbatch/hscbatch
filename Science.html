@@ -1,5 +1,185 @@
 <!DOCTYPE html>
 <html lang="bn">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Animated Google Sites Header</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        /* সম্পূর্ণ সাদা ব্যাকগ্রাউন্ড ও সফট গ্লো এরিয়া */
+        .header-wrapper {
+            background: #ffffff;
+            padding: 25px 15px;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        /* ব্যাকগ্রাউন্ড লাইট এনিমেশন ইফেক্ট */
+        .header-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.03), transparent 70%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* মূল HSC হেডিং টাইটেল */
+        .main-title {
+            font-size: 34px;
+            font-weight: 800;
+            color: #ef4444; /* আকর্ষণীয় লাল টোন */
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 8px rgba(239, 68, 68, 0.1);
+        }
+
+        /* ব্যাচ সিলেক্টর ক্যাপসুল বক্স */
+        .batch-container {
+            display: inline-flex;
+            background: #f1f5f9;
+            padding: 6px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .batch-btn {
+            padding: 10px 24px;
+            color: #64748b;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            display: inline-block;
+        }
+
+        /* HSC 28 বাটন - যা একটিভ থাকবে এবং প্রেস করলে লাল হবে */
+        .batch-btn.active-batch {
+            background: #10b981; /* সবুজ কালার */
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        /* প্রেস/ক্লিক করলে লাল রঙের এনিমেশন ইফেক্ট */
+        .batch-btn:active, .cat-btn:active {
+            background: #dc2626 !important;
+            color: #ffffff !important;
+            transform: scale(0.95);
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.5) !important;
+        }
+
+        /* ক্যাটাগরি বাটন এরিয়া */
+        .category-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* গ্লোয়িং এনিমেশন সহ প্রিমিয়াম ক্যাটাগরি বাটন */
+        .cat-btn {
+            padding: 12px 24px;
+            background: #ffffff;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+            border-radius: 25px;
+            font-size: 14.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        /* বাটন হোভার/এনিমেশন ইফেক্ট */
+        .cat-btn:hover {
+            transform: translateY(-3px);
+            border-color: #38bdf8;
+            color: #0284c7;
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.15);
+            animation: pulseGlow 1.5s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 8px 20px rgba(56, 189, 248, 0.1); }
+            100% { box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3); }
+        }
+
+        /* পেজ সিলেক্ট বা চাপ দিলে যে কালারটি সবুজ থেকে অন্য কালার (Royal Blue) হবে */
+        .cat-btn.current-page {
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important; /* প্রিমিয়াম রয়্যাল ব্লু */
+            color: #ffffff !important;
+            border-color: #1d4ed8 !important;
+            box-shadow: 0 6px 18px rgba(29, 78, 216, 0.3) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-wrapper">
+        <div class="main-title">HSC</div>
+
+        <div class="batch-container">
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/home" target="_blank" class="batch-btn" id="btn-home">Home</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-all-subjects" target="_blank" class="batch-btn" id="btn-all">All Subjects</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/home" target="_blank" class="batch-btn active-batch">HSC 28</a>
+        </div>
+
+        <div class="category-wrapper">
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-science" target="_blank" class="cat-btn" id="btn-science">Science</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-humanities" target="_blank" class="cat-btn" id="btn-humanities">Humanities</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-business-studies" target="_blank" class="cat-btn" id="btn-business">Business Studies</a>
+            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/free-course" target="_blank" class="cat-btn" id="btn-free">Free Course</a>
+        </div>
+    </div>
+
+    <script>
+        // সিকিউরিটি বাইপাস করে বর্তমানে কোন পেজে আছে তা ট্র্যাক করার স্মার্ট স্ক্রিপ্ট
+        const currentUrl = document.referrer || window.location.href;
+        
+        if (currentUrl.includes("hsc-28-science")) {
+            document.getElementById("btn-science").classList.add("current-page");
+        } else if (currentUrl.includes("hsc-28-humanities")) {
+            document.getElementById("btn-humanities").classList.add("current-page");
+        } else if (currentUrl.includes("hsc-28-business-studies")) {
+            document.getElementById("btn-business").classList.add("current-page");
+        } else if (currentUrl.includes("free-course")) {
+            document.getElementById("btn-free").classList.add("current-page");
+        } else if (currentUrl.includes("hsc-28-all-subjects")) {
+            document.getElementById("btn-all").classList.add("current-page");
+        } else if (currentUrl.includes("home")) {
+            document.getElementById("btn-home").classList.add("current-page");
+        }
+    </script>
+
+</body>
+
+
+
+    
+
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
