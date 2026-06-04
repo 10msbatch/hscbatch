@@ -668,6 +668,47 @@
     </div>
 
 
+    <!-- 🧠 জাভাস্ক্রিপ্ট লজিক (সবগুলো পার্ট ইন্টারঅ্যাক্টিভ করার জন্য) -->
+    <script>
+        
+
+
+
+
+        
+
+        // ❓ FAQ অ্যাকর্ডিয়ন স্ক্রিপ্ট
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const answer = button.nextElementSibling;
+
+                faqItem.classList.toggle('active');
+
+                if (faqItem.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    answer.style.maxHeight = '0';
+                }
+            });
+        });
+
+        // 📱 মোবাইল টাচ সোয়াইপ সাপোর্ট (রিভিউ ট্র্যাকের জন্য)
+        function enableTouchScroll(containerId) {
+            const container = document.getElementById(containerId);
+            let isDown = false; let startX; let scrollLeft;
+            container.addEventListener('mousedown', (e) => { isDown = true; startX = e.pageX - container.offsetLeft; scrollLeft = container.scrollLeft; });
+            container.addEventListener('mouseleave', () => { isDown = false; });
+            container.addEventListener('mouseup', () => { isDown = false; });
+            container.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - container.offsetLeft; const walk = (x - startX) * 2; container.scrollLeft = scrollLeft - walk; });
+        }
+        enableTouchScroll('videoTrack');
+        enableTouchScroll('textTrack');
+    </script>
+</body>
+</html>
+
+
 
 
         
