@@ -1102,9 +1102,9 @@
         </div>
 
         <div class="category-wrapper">
-            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-science" target="_blank" class="cat-btn" id="btn-science">Science</a>
+            <a href="http://10msbatch.github.io/hscbatch/Science" target="_blank" class="cat-btn" id="btn-science">Science</a>
             <a href="https://10msbatch.github.io/hscbatch/" target="_blank" class="cat-btn" id="btn-humanities">Humanities</a>
-            <a href="https://sites.google.com/view/hsc28onlinebatch10ms/hsc-28-business-studies" target="_blank" class="cat-btn" id="btn-business">Business Studies</a>
+            <a href="https://http://10msbatch.github.io/hscbatch/Business" target="_blank" class="cat-btn" id="btn-business">Business Studies</a>
             <a href="http://10msbatch.github.io/hscbatch/free-course.html" target="_blank" class="cat-btn" id="btn-free">Free Course</a>
         </div>
     </div>
