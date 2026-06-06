@@ -1,20 +1,23 @@
-<!DOCTYPE html>
+
+            <!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Educational Landing Page</title>
+    <!-- প্রফেশনাল লুকের জন্য গুগলের Inter ফন্ট যুক্ত করা হলো -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* --- ১. রিবুট ও প্রিমিয়াম বেস স্টাইল --- */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background-color: #FFFFFF; /* পিওর হোয়াইট ব্যাকগ্রাউন্ড */
+            background-color: #FFFFFF;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -24,7 +27,7 @@
             padding: 20px 10px;
         }
 
-        /* --- ২. ক্লাউডি, মিস্ট এবং রেইন অ্যানিমেশন লেয়ার --- */
+        /* --- ২. ক্লাউডি ও রেইন অ্যানিমেশন লেয়ার --- */
         .cinematic-bg {
             position: fixed;
             top: 0;
@@ -42,16 +45,6 @@
             height: 100%;
             background: radial-gradient(circle at 50% -30%, rgba(219, 234, 254, 0.5) 0%, rgba(255, 255, 255, 0) 60%);
             animation: cloudFloat 25s ease-in-out infinite alternate;
-        }
-
-        .floating-mist {
-            position: absolute;
-            bottom: 0;
-            width: 200%;
-            height: 50vh;
-            background: linear-gradient(to top, rgba(241, 245, 249, 0.6), transparent);
-            filter: blur(30px);
-            animation: mistShift 40s linear infinite;
         }
 
         .rain-viewport {
@@ -79,12 +72,7 @@
             100% { transform: translateX(4%) scale(1.06); }
         }
 
-        @keyframes mistShift {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* --- ৩. হেডার সেকশন ও গ্লো টেক্সট --- */
+        /* --- ৩. মেইন কন্টেইনার এবং হেডার সেকশন --- */
         .main-wrapper {
             max-width: 1200px;
             width: 100%;
@@ -98,6 +86,99 @@
             position: relative;
         }
 
+        /* --- ৪. HSC 28 স্পেশাল বক্স (প্রোফেশনাল নিওন গ্লো ইফেক্ট) --- */
+        .hsc28-glow-box {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 24px 40px;
+            border-radius: 24px;
+            position: relative;
+            margin-bottom: 30px;
+            z-index: 10;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            /* প্রোফেশনাল সফট গ্লো ইফেক্ট */
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.08), 
+                        0 0 20px rgba(59, 130, 246, 0.05);
+            animation: boxGlowPulse 4s infinite alternate ease-in-out;
+        }
+
+        /* বক্সের বর্ডারে একটি হালকা লাইভ গ্লো অ্যানিমেশন */
+        @keyframes boxGlowPulse {
+            0% {
+                box-shadow: 0 10px 40px rgba(59, 130, 246, 0.08), 0 0 15px rgba(59, 130, 246, 0.05);
+                border-color: rgba(59, 130, 246, 0.2);
+            }
+            100% {
+                box-shadow: 0 15px 50px rgba(59, 130, 246, 0.15), 0 0 30px rgba(38, 198, 218, 0.2);
+                border-color: rgba(38, 198, 218, 0.4);
+            }
+        }
+
+        .hsc28-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #1e1b4b;
+            margin-bottom: 18px;
+            letter-spacing: -0.3px;
+        }
+
+        .hsc28-btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* প্রোফেশনাল বাটন স্টাইল */
+        .hsc28-link-btn {
+            font-family: 'Inter', sans-serif;
+            padding: 11px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #475569;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 30px;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden; /* ক্লিক ইফেক্ট বাউন্ডারির বাইরে যাবে না */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        /* হোভার গ্লো ইফেক্ট */
+        .hsc28-link-btn:hover {
+            color: #2563eb;
+            border-color: #2563eb;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* ইউনিক লাল ক্লিক রিপল ইফেক্ট এলিমেন্ট */
+        .click-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.35); /* লাল কাস্টম ইফেক্ট */
+            transform: scale(0);
+            animation: rippleEffect 0.5s linear;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* টাইটেল এবং সাবটাইটেল */
         .premium-title {
             font-size: 38px;
             font-weight: 900;
@@ -115,18 +196,18 @@
             font-size: 16px;
             color: #475569;
             font-weight: 500;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
-        /* সাউন্ড কন্ট্রোল বাটন স্টাইল */
+        /* সাউন্ড কন্ট্রোল বাটন */
         .sound-toggle-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(226, 232, 240, 0.9);
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 30px;
             font-size: 13px;
             font-weight: 600;
@@ -143,16 +224,10 @@
             color: #1e293b;
         }
 
-        @keyframes textShine {
-            to { background-position: 200% center; }
-        }
+        @keyframes textShine { to { background-position: 200% center; } }
+        @keyframes revealFade { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes revealFade {
-            from { opacity: 0; transform: translateY(25px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- ৪. রেসপনসিভ গ্রিড লেআউট --- */
+        /* --- ৫. রেসপনসিভ গ্রিড লেআউট --- */
         .responsive-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -160,7 +235,6 @@
             padding: 5px;
         }
 
-        /* কার্ডের মূল ডিজাইন (Rounded ও Glassmorphism) */
         .edu-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(15px);
@@ -182,12 +256,8 @@
         .responsive-grid .edu-card:nth-child(2n) { animation-duration: 6s; animation-delay: 0.3s; }
         .responsive-grid .edu-card:nth-child(3n) { animation-duration: 4s; animation-delay: 0.6s; }
 
-        @keyframes slowFloat {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-5px); }
-        }
+        @keyframes slowFloat { 0% { transform: translateY(0); } 100% { transform: translateY(-5px); } }
 
-        /* ইমেজ থাম্বনেইল কন্টেইনার */
         .card-thumb {
             height: 110px;
             display: flex;
@@ -195,7 +265,6 @@
             align-items: center;
             padding: 12px;
             background: rgba(248, 250, 252, 0.4);
-            position: relative;
         }
 
         .card-thumb img {
@@ -205,7 +274,6 @@
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* কার্ড টেক্সট ফুটার */
         .card-caption {
             background: #0f172a;
             color: #FFFFFF;
@@ -216,35 +284,20 @@
             transition: background 0.3s;
         }
 
-        /* --- ৫. হোভার ইফেক্টস এবং গ্লো থিমসমূহ --- */
-        .edu-card:hover {
-            transform: translateY(-8px) scale(1.03) !important;
-            animation-play-state: paused;
-        }
+        /* হোভার ইফেক্টস */
+        .edu-card:hover { transform: translateY(-8px) scale(1.03) !important; animation-play-state: paused; }
+        .edu-card:hover .card-thumb img { transform: scale(1.06); }
 
-        .edu-card:hover .card-thumb img {
-            transform: scale(1.06);
-        }
-
-        .theme-blue:hover {
-            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.15);
-            border-color: #3b82f6;
-        }
+        .theme-blue:hover { box-shadow: 0 15px 30px rgba(59, 130, 246, 0.15); border-color: #3b82f6; }
         .theme-blue:hover .card-caption { background: #3b82f6; }
 
-        .theme-orange:hover {
-            box-shadow: 0 15px 30px rgba(249, 115, 22, 0.15);
-            border-color: #f97316;
-        }
+        .theme-orange:hover { box-shadow: 0 15px 30px rgba(249, 115, 22, 0.15); border-color: #f97316; }
         .theme-orange:hover .card-caption { background: #f97316; }
 
-        .theme-green:hover {
-            box-shadow: 0 15px 30px rgba(34, 197, 94, 0.15);
-            border-color: #22c55e;
-        }
+        .theme-green:hover { box-shadow: 0 15px 30px rgba(34, 197, 94, 0.15); border-color: #22c55e; }
         .theme-green:hover .card-caption { background: #22c55e; }
 
-        /* --- ৬. হাই-এন্ড পপআপ মোডাল ডিজাইন --- */
+        /* --- ৬. হাই-এন্ড পপআপ মোডাল --- */
         .blur-overlay {
             position: fixed;
             top: 0;
@@ -275,74 +328,18 @@
             overflow-y: auto;
         }
 
-        @keyframes modalPop {
-            from { transform: scale(0.92) translateY(30px); opacity: 0; }
-            to { transform: scale(1) translateY(0); opacity: 1; }
-        }
-
-        .close-cross {
-            position: absolute;
-            top: 15px;
-            right: 18px;
-            font-size: 26px;
-            color: #94a3b8;
-            cursor: pointer;
-        }
+        @keyframes modalPop { from { transform: scale(0.92) translateY(30px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+        .close-cross { position: absolute; top: 15px; right: 18px; font-size: 26px; color: #94a3b8; cursor: pointer; }
         .close-cross:hover { color: #0f172a; }
+        .modal-heading { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 18px; text-align: center; border-bottom: 1px solid #FEE2E2; padding-bottom: 10px; }
+        .modal-body { text-align: left; margin-bottom: 20px; }
+        .feature-item { margin-bottom: 14px; }
+        .feature-item h3 { font-size: 14px; color: #0f172a; font-weight: 700; margin-bottom: 4px; }
+        .feature-item ul { list-style: none; }
+        .feature-item ul li { font-size: 13px; color: #475569; margin-bottom: 3px; position: relative; padding-left: 16px; }
+        .feature-item ul li::before { content: "✓"; color: #EF4444; font-weight: 900; position: absolute; left: 0; }
 
-        .modal-heading {
-            font-size: 18px;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 18px;
-            text-align: center;
-            border-bottom: 1px solid #FEE2E2;
-            padding-bottom: 10px;
-        }
-
-        .modal-body {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .feature-item {
-            margin-bottom: 14px;
-        }
-
-        .feature-item h3 {
-            font-size: 14px;
-            color: #0f172a;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .feature-item ul {
-            list-style: none;
-        }
-
-        .feature-item ul li {
-            font-size: 13px;
-            color: #475569;
-            margin-bottom: 3px;
-            position: relative;
-            padding-left: 16px;
-        }
-
-        .feature-item ul li::before {
-            content: "✓";
-            color: #EF4444;
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-        }
-
-        /* --- ৭. মোডাল ক্লাস বাটন সিলেকশন --- */
-        .modal-btn-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
+        .modal-btn-list { display: flex; flex-direction: column; gap: 10px; }
         .class-btn {
             display: flex;
             justify-content: space-between;
@@ -357,70 +354,73 @@
             border: 1px solid rgba(226, 232, 240, 0.9);
             transition: all 0.3s;
         }
-
-        .class-btn .arrow-svg {
-            transition: transform 0.2s;
-        }
-
-        .class-btn:hover {
-            transform: translateY(-2px);
-            color: #0f172a;
-        }
-
-        .class-btn:hover .arrow-svg {
-            transform: translateX(4px);
-        }
+        .class-btn .arrow-svg { transition: transform 0.2s; }
+        .class-btn:hover { transform: translateY(-2px); color: #0f172a; }
+        .class-btn:hover .arrow-svg { transform: translateX(4px); }
 
         .b-6:hover { border-color: #3b82f6; box-shadow: 0 6px 15px rgba(59, 130, 246, 0.1); }
         .b-7:hover { border-color: #eab308; box-shadow: 0 6px 15px rgba(234, 179, 8, 0.1); }
         .b-8:hover { border-color: #f97316; box-shadow: 0 6px 15px rgba(249, 115, 22, 0.1); }
 
-        /* --- ৮. বড় স্ক্রিনের জন্য অপটিমাইজেশন --- */
+        /* --- ৭. বড় স্ক্রিনের জন্য অপটিমাইজেশন --- */
         @media (min-width: 768px) {
-            .responsive-grid { 
-                grid-template-columns: repeat(3, 1fr);
-                gap: 25px; 
-            }
+            .responsive-grid { grid-template-columns: repeat(3, 1fr); gap: 25px; }
             .card-thumb { height: 160px; }
             .card-caption { font-size: 16px; padding: 14px; }
             .premium-title { font-size: 48px; }
             .edu-card { border-radius: 24px; }
         }
 
-        /* মোবাইল স্ক্রিনে সুন্দর দেখানোর জন্য গ্রিড কলাম অ্যাডজাস্টমেন্ট */
+        /* মোবাইল স্ক্রিনে গ্রিড কলাম অ্যাডজাস্টমেন্ট */
         @media (max-width: 650px) {
-            .responsive-grid { 
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
+            .responsive-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .hsc28-glow-box { padding: 20px; width: 95%; }
         }
     </style>
 </head>
 <body>
 
+    <!-- ১০০% ওয়ার্কিং ডিরেক্ট হাই-কোয়ালিটি অ্যাম্বিয়েন্ট রেইন অডিও ট্র্যাক -->
     <audio id="ambientRainSound" loop>
         <source src="https://assets.mixkit.co/active_storage/sfx/2433/2433-84.wav" type="audio/wav">
     </audio>
 
+    <!-- অ্যানিমেটেড ব্যাকগ্রাউন্ড -->
     <div class="cinematic-bg">
         <div class="soft-clouds"></div>
-        <div class="floating-mist"></div>
         <div id="rainEngine" class="rain-viewport"></div>
     </div>
 
+    <!-- মেইন ল্যান্ডিং র‍্যাপার -->
     <div class="main-wrapper">
         
+        <!-- হেডার এরিয়া -->
         <div class="hero-header">
+            
+            <!-- নতুন ও গ্লোয়িং প্রফেশনাল HSC 28 বক্স সেকশন -->
+            <div class="hsc28-glow-box">
+                <div class="hsc28-title">HSC 28 Special Batches</div>
+                <div class="hsc28-btn-group">
+                    <a href="https://10msbatch.github.io/hscbatch/Science" target="_blank" class="hsc28-link-btn" onclick="applyRedRipple(event)">Science</a>
+                    <a href="https://10msbatch.github.io/hscbatch/Business" target="_blank" class="hsc28-link-btn" onclick="applyRedRipple(event)">Business Studies</a>
+                    <a href="https://10msbatch.github.io/hscbatch/Humanities.html" target="_blank" class="hsc28-link-btn" onclick="applyRedRipple(event)">Humanities</a>
+                </div>
+            </div>
+            <br>
+
             <h1 class="premium-title">শেখা হোক আনন্দে!</h1>
             <p class="premium-subtitle">এক জায়গায় স্কুল ও কলেজের সম্পূর্ণ প্রস্তুতি!</p>
             
+            <!-- সাউন্ড অন/অফ করার বাটন -->
             <button class="sound-toggle-btn" onclick="toggleAmbientSound()" id="soundBtn">
                 <span>🎵</span> <span id="soundBtnText">আবহাওয়ার সাউন্ড অন করুন</span>
             </button>
         </div>
 
+        <!-- গ্রিড লেআউট (স্ক্রিনশটের মতো হুয়াকহু অবয়ব) -->
         <div class="responsive-grid">
             
+            <!-- ১) HSC 26 -->
             <a href="https://10minuteschool.com/hsc/hsc-26/" target="_blank" class="edu-card theme-blue">
                 <div class="card-thumb">
                     <img src="https://drive.google.com/thumbnail?id=1xYlncVf_PGtyv2IYblgD1dmTV_AVqoKY&sz=500" alt="HSC 26">
@@ -428,6 +428,7 @@
                 <div class="card-caption">HSC ২৬</div>
             </a>
 
+            <!-- ২) HSC 27 -->
             <a href="https://10minuteschool.com/hsc/hsc-27/" target="_blank" class="edu-card theme-blue">
                 <div class="card-thumb">
                     <img src="https://drive.google.com/thumbnail?id=1aN0vdS05LXeO-7gXi9fpjs8bE5r6Q37l&sz=500" alt="HSC 27">
@@ -435,6 +436,7 @@
                 <div class="card-caption">HSC ২৭</div>
             </a>
 
+            <!-- ৩) HSC 28 -->
             <a href="https://10msbatch.github.io/hscbatch/Science" target="_blank" class="edu-card theme-blue">
                 <div class="card-thumb">
                     <img src="https://drive.google.com/thumbnail?id=1uWQkI54XuOljWmMOl4PJ6G1mC3490jA_&sz=500" alt="HSC 28">
@@ -442,6 +444,7 @@
                 <div class="card-caption">HSC ২৮</div>
             </a>
 
+            <!-- ৪) SSC 27 -->
             <a href="https://10minuteschool.com/ssc/ssc-27/" target="_blank" class="edu-card theme-orange">
                 <div class="card-thumb">
                     <img src="https://drive.google.com/thumbnail?id=1C7q6JdtQ01uLACFN-IVHkR-Art8udadU&sz=500" alt="SSC 27">
@@ -449,6 +452,7 @@
                 <div class="card-caption">দশম শ্রেণি</div>
             </a>
 
+            <!-- ৫) Class 9 -->
             <a href="https://10minuteschool.com/ssc/ssc-28/" target="_blank" class="edu-card theme-green">
                 <div class="card-thumb">
                     <img src="https://drive.google.com/thumbnail?id=195SPJIFHXvwlux9rbMvBGJG-qnBUAf0l&sz=500" alt="Class 9">
@@ -456,6 +460,7 @@
                 <div class="card-caption">নবম শ্রেণি</div>
             </a>
 
+            <!-- ৬) Class 6-8 -->
             <div onclick="openGlowModal()" class="edu-card theme-green">
                 <div class="card-thumb">
                     <img src="https://drive.google.com/thumbnail?id=19VyU1imZMN5NUHXB6p3NknPf0sLgcaYy&sz=500" alt="Class 6-8">
@@ -466,6 +471,7 @@
         </div>
     </div>
 
+    <!-- পপআপ মোডাল -->
     <div id="glowModal" class="blur-overlay">
         <div class="glow-modal-card">
             <span class="close-cross" onclick="closeGlowModal()">&times;</span>
@@ -477,7 +483,6 @@
                     <ul>
                         <li>সপ্তাহে ৫ দিন লাইভ ক্লাস</li>
                         <li>দেশের সবচেয়ে অভিজ্ঞ টিচার প্যানেল</li>
-                        <li>৪ বছরে লক্ষাধিক স্টুডেন্ট পড়ানোর অভিজ্ঞতা</li>
                     </ul>
                 </div>
                 <div class="feature-item">
@@ -485,15 +490,6 @@
                     <ul>
                         <li>বোর্ড সিলেবাসের ফুল প্রস্তুতি</li>
                         <li>পরীক্ষায় আসার মতো প্রশ্ন ও সমাধান</li>
-                        <li>ফ্রি মাস্টারবুকে MCQ প্র্যাকটিস</li>
-                    </ul>
-                </div>
-                <div class="feature-item">
-                    <h3>৩) প্যারেন্টস মিটিং ও রিপোর্ট কার্ড</h3>
-                    <ul>
-                        <li>মান্থলি প্যারেন্টস-টিচার মিটিং</li>
-                        <li>রেগুলার অ্যাটেন্ডেন্স আপডেট</li>
-                        <li>এক্সাম রিপোর্ট কার্ড</li>
                     </ul>
                 </div>
             </div>
@@ -527,17 +523,41 @@
             }
         }
 
-        // সাউন্ড কন্ট্রোল করার ফাংশন
+        // লাল ইউনিক ক্লিক রিপল ইফেক্ট জেনারেটর
+        function applyRedRipple(event) {
+            const button = event.currentTarget;
+            
+            // ক্লিক করা স্থানে লাল বাবল তৈরি করা
+            const circle = document.createElement("span");
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
+            circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
+            circle.classList.add("click-ripple");
+
+            // আগের কোনো রিপল থাকলে রিমুভ করা
+            const ripple = button.getElementsByClassName("click-ripple")[0];
+            if (ripple) { ripple.remove(); }
+
+            button.appendChild(circle);
+        }
+
+        // ১০০% ওয়ার্কিং অডিও টগল ফাংশন
         function toggleAmbientSound() {
             const audio = document.getElementById('ambientRainSound');
             const btnText = document.getElementById('soundBtnText');
             const btn = document.getElementById('soundBtn');
 
             if (audio.paused) {
-                audio.play();
-                audio.volume = 0.4; // সাউন্ড যাতে বেশি লাউড না হয়, ভলিউম অপ্টিমাইজড
-                btnText.innerText = "আবহাওয়ার সাউন্ড অফ করুন";
-                btn.style.borderColor = "#EF4444"; // অন থাকলে লালচে বর্ডার ভাইব দিবে
+                audio.play().then(() => {
+                    audio.volume = 0.25; // ব্যাকগ্রাউন্ডে পারফেক্ট সাউন্ড লেভেল
+                    btnText.innerText = "আবহাওয়ার সাউন্ড অফ করুন";
+                    btn.style.borderColor = "#EF4444";
+                }).catch(error => {
+                    alert("দয়া করে পেজের যেকোনো জায়গায় একবার ক্লিক করে আবার বাটনটি ট্রাই করুন মামা! ব্রাউজার সিকিউরিটি ফার্স্ট ক্লিকের আগে ডিরেক্ট অডিও অটো-প্লে সাময়িক ব্লক করে রাখে।");
+                });
             } else {
                 audio.pause();
                 btnText.innerText = "আবহাওয়ার সাউন্ড অন করুন";
@@ -558,4 +578,3 @@
     </script>
 </body>
 </html>
-
