@@ -26,7 +26,7 @@
             padding: 40px 15px;
         }
 
-        /* --- ২. লাইভ গ্যালাক্সি ও তারা অ্যানিমেশন --- */
+        /* --- ২. লাইভ গ্যালাক্সি ও তারার অ্যানিমেশন --- */
         .galaxy-bg {
             position: fixed;
             top: 0;
@@ -39,7 +39,6 @@
             background: radial-gradient(circle at 50% 50%, #090514 0%, #030206 100%);
         }
 
-        /* মহাজাগতিক নেবুলা ইফেক্ট */
         .nebula {
             position: absolute;
             width: 150%;
@@ -52,7 +51,6 @@
             animation: galaxyRotate 120s linear infinite;
         }
 
-        /* চলন্ত তারা কণা */
         .stars-container {
             position: absolute;
             width: 100%;
@@ -190,7 +188,7 @@
 
         @keyframes textShine { to { background-position: 200% center; } }
 
-        /* --- ৫. মেইন একাডেমিক গ্রিড (আগের ডিজাইন অক্ষুণ্ণ রাখা হয়েছে) --- */
+        /* --- ৫. মেইন একাডেমিক গ্রিড (৩ কলাম) --- */
         .responsive-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -232,7 +230,7 @@
         }
 
         .card-caption {
-            background: #1e1b4b; /* ডার্ক থিম ম্যাচিং নেভি */
+            background: #1e1b4b;
             color: #f8fafc;
             padding: 12px 5px;
             font-size: 14px;
@@ -241,7 +239,7 @@
             transition: all 0.3s;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
-        /* কার্ড হোভার ডার্ক থিম গ্লো */
+
         .edu-card:hover { transform: translateY(-8px) scale(1.03); }
         .edu-card:hover .card-thumb img { transform: scale(1.06); }
 
@@ -310,73 +308,82 @@
         }
         .class-btn:hover { background: #334155; color: #fff; transform: translateY(-2px); border-color: #3b82f6; }
 
-        /* --- ৭. ল্যাঙ্গুয়েজ সেকশন (১০টি নিখুঁত কার্ড লেআউট - পোস্টার ক্লিক) --- */
+
+        /* =========================================================================
+           ✨ ৭. ল্যাঙ্গুয়েজ ও স্কিল সেকশন (হুবহু 2427_2.png এর মতো ২*৫ গ্রিড ও কমপ্যাক্ট ডিজাইন)
+           ========================================================================= */
         .premium-lang-section {
             width: 100% !important;
-            margin-top: 40px !important;
-            background: rgba(13, 11, 26, 0.6) !important;
+            max-width: 640px !important; /* স্ক্রিনের মাঝখানে সুন্দরভাবে সংকুচিত রাখার জন্য */
+            margin: 40px auto !important;
+            background: rgba(10, 10, 12, 0.8) !important;
             border-radius: 35px !important;
-            padding: 50px 20px !important;
-            border: 1px solid rgba(139, 92, 246, 0.15) !important;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4) !important;
+            padding: 40px 24px !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6) !important;
         }
 
         .lang-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
         .lang-main-heading {
-            font-size: 28px !important;
+            font-size: 24px !important;
             font-weight: 800 !important;
-            color: #ffffff !important;
+            color: #00ffcc !important; /* 2427_2.png এর মতো ব্রাইট গ্রিড ভাইব */
             line-height: 1.4 !important;
-            background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc);
+            background: linear-gradient(135deg, #2dd4bf, #38bdf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
-        /* প্রফেশনাল রেসপনসিভ ৩ কলাম গ্রিড (মোবাইলে স্ক্রিন অনুযায়ী মানিয়ে যাবে) */
+        /* পারফেক্ট ২ কলাম আর্কিটেকচার যা সবসময় ২ কলাম ধরে রাখবে */
         .lang-grid {
             display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important;
-            gap: 22px !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 16px !important;
         }
 
-        /* পুরো পোস্টার লিংকড */
         .lang-card-anchor {
             text-decoration: none !important;
             color: inherit !important;
             display: block !important;
         }
 
+        /* 2427_2.png ম্যাচিং লাক্সারি কমপ্যাক্ট কার্ড */
         .lang-card {
-            background: rgba(30, 27, 57, 0.4) !important;
-            border: 1px solid rgba(255, 255, 255, 0.06) !important;
-            border-radius: 20px !important;
-            padding: 0 !important; /* প্রফেশনাল ফুল-পোস্টার টাচ */
-            overflow: hidden !important;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            border-radius: 24px !important;
+            padding: 16px !important;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
             height: 100% !important;
             display: flex !important;
             flex-direction: column !important;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+            align-items: center !important;
+            text-align: center !important;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
         }
 
-        /* কার্ড হোভার নিওন গ্লো */
+        /* হোভার ইফেক্ট */
         .lang-card-anchor:hover .lang-card {
-            transform: translateY(-8px) scale(1.02) !important;
-            border-color: rgba(168, 85, 247, 0.4) !important;
-            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.25) !important;
+            transform: translateY(-5px) !important;
+            background: rgba(255, 255, 255, 0.06) !important;
+            border-color: rgba(45, 212, 191, 0.3) !important;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(45, 212, 191, 0.1) !important;
         }
 
+        /* ইমেজ র‍্যাপার - 2427_2.png এর মতো রাউন্ডেড ও ক্যাপসুল স্টাইল */
         .lang-img-wrapper {
             width: 100% !important;
-            padding-top: 56.25% !important; /* 16:9 পারফেক্ট অ্যাসপেক্ট রেশিও */
+            padding-top: 56.25% !important; /* ১৬:৯ প্রফেশনাল রেশিও */
             position: relative !important;
-            background: #090714 !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+            border-radius: 14px !important;
+            overflow: hidden !important;
+            margin-bottom: 12px !important;
+            background: #111 !important;
         }
 
         .lang-img-wrapper img {
@@ -389,28 +396,35 @@
         }
 
         .lang-card-content {
-            padding: 16px !important;
-            text-align: left !important;
-            background: rgba(15, 12, 30, 0.8) !important;
-            flex-grow: 1 !important;
+            width: 100% !important;
             display: flex !important;
             flex-direction: column !important;
-            justify-content: center !important;
+            gap: 4px !important;
         }
 
+        /* কোর্স টাইটেল */
         .lang-course-name {
-            font-size: 14px !important;
+            font-size: 13px !important;
             font-weight: 700 !important;
             color: #ffffff !important;
-            margin-bottom: 6px !important;
             line-height: 1.4 !important;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 36px; /* ২ লাইনের পারফেক্ট অ্যালাইনমেন্ট ধরে রাখার জন্য */
         }
 
+        /* ইন্সট্রাক্টর */
         .lang-instructor {
-            font-size: 12px !important;
+            font-size: 11px !important;
             color: #94a3b8 !important;
             font-weight: 500 !important;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
+
 
         /* --- ৮. স্ক্রিন অপটিমাইজেশন মিডিয়া কোয়েরি --- */
         @media (min-width: 768px) {
@@ -419,22 +433,24 @@
             .premium-title { font-size: 48px; }
         }
 
-        @media (max-width: 992px) {
-            .lang-grid { grid-template-columns: repeat(2, 1fr) !important; }
-            .responsive-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
         @media (max-width: 650px) {
             .responsive-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .lang-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
             .hsc28-glow-box { padding: 20px 25px; width: 95%; }
             .hsc28-link-btn { padding: 10px 18px; font-size: 13px; }
-            .lang-main-heading { font-size: 22px !important; }
+            
+            /* মোবাইল স্ক্রিনেও যাতে ২ কলাম ভেঙে নিচে না যায় তার জন্য ফিক্সড সেটিংস */
+            .premium-lang-section { padding: 25px 12px !important; border-radius: 24px !important; }
+            .lang-grid { gap: 10px !important; }
+            .lang-card { padding: 10px !important; border-radius: 16px !important; }
+            .lang-course-name { font-size: 11px !important; height: 32px; }
+            .lang-instructor { font-size: 10px !important; }
+            .lang-main-heading { font-size: 18px !important; }
         }
     </style>
 </head>
 <body>
-     <!-- লাইভ মহাজাগতিক গ্যালাক্সি ব্যাকগ্রাউন্ড লেয়ার -->
+
+    <!-- লাইভ মহাজাগতিক গ্যালাক্সি ব্যাকগ্রাউন্ড লেয়ার -->
     <div class="galaxy-bg">
         <div class="nebula"></div>
         <div id="starField" class="stars-container"></div>
@@ -514,144 +530,145 @@
 
         </div>
 
-            <!-- =========================================================================
-           ✨ ল্যাঙ্গুয়েজ ও স্কিল সেকশন (১০টি নির্দিষ্ট কার্ড - সম্পূর্ণ পোস্টার ক্লিক ডিজাইন)
+
+        <!-- =========================================================================
+           ✨ ল্যাঙ্গুয়েজ ও স্কিল সেকশন (১০টি নির্দিষ্ট কার্ড - হুবহু 2427_2.png এর মতো ২*৫ গ্রিড)
            ========================================================================= -->
         <div class="premium-lang-section">
             
             <div class="lang-header">
-                <h2 class="lang-main-heading">ভাষা ও দক্ষতা অর্জন সেকশন</h2>
-                <p style="color: #64748b; font-size: 14px;">আপনার পছন্দের পোস্টারে সরাসরি ক্লিক করে কোর্সে যুক্ত হোন</p>
+                <h2 class="lang-main-heading">ঘরে বসে অনলাইনেও ইংরেজি শেখা<br>চলুক নিরবচ্ছিন্ন</h2>
+                <p style="color: #64748b; font-size: 13px;">শেখার সেরা সুযোগ অনলাইন ও অফলাইন দু'জায়গাতেই</p>
             </div>
 
             <div class="lang-grid">
                 
-                <!-- Card 1 -->
+                <!-- Row 1 | Card 1 -->
                 <a href="https://10ms.io/lGnafQ" target="_blank" rel="noopener noreferrer" class="lang-card-anchor">
                     <div class="lang-card">
                         <div class="lang-img-wrapper">
-                            <img src="https://drive.google.com/thumbnail?id=1KDea9tx1znbkZrDOHRS5F8lP-fFbssel&sz=600" alt="ঘরে বসে Spoken English" loading="lazy">
+                            <img src="https://drive.google.com/thumbnail?id=1KDea9tx1znbkZrDOHRS5F8lP-fFbssel&sz=500" alt="ঘরে বসে Spoken English" loading="lazy">
                         </div>
                         <div class="lang-card-content">
                             <h4 class="lang-course-name">ঘরে বসে Spoken English</h4>
-                            <div class="lang-instructor">👤 Munzereen Shahid</div>
+                            <div class="lang-instructor">Munzereen Shahid</div>
                         </div>
                     </div>
                 </a>
 
-                <!-- Card 2 -->
+                <!-- Row 1 | Card 2 -->
                 <a href="https://10ms.io/qGnazO" target="_blank" rel="noopener noreferrer" class="lang-card-anchor">
                     <div class="lang-card">
                         <div class="lang-img-wrapper">
-                            <img src="https://drive.google.com/thumbnail?id=1NUTZZrMVsgeojzOhDRxBtD4AQj5lZ5j6&sz=600" alt="IELTS LIVE Batch" loading="lazy">
+                            <img src="https://drive.google.com/thumbnail?id=1NUTZZrMVsgeojzOhDRxBtD4AQj5lZ5j6&sz=500" alt="IELTS LIVE Batch" loading="lazy">
                         </div>
                         <div class="lang-card-content">
                             <h4 class="lang-course-name">IELTS LIVE Batch</h4>
-                            <div class="lang-instructor">👤 Zawad Hasan Adib +3</div>
+                            <div class="lang-instructor">Zawad Hasan Adib +3</div>
                         </div>
                     </div>
                 </a>
 
-                <!-- Card 3 -->
+                <!-- Row 2 | Card 3 -->
                 <a href="https://10ms.io/3Gna25" target="_blank" rel="noopener noreferrer" class="lang-card-anchor">
                     <div class="lang-card">
                         <div class="lang-img-wrapper">
-                            <img src="https://drive.google.com/thumbnail?id=1-noQMWL1lZovcmYBLU9yoOODx7fi4lJ6&sz=600" alt="২৪ ঘণ্টায় কোরআন শিখি" loading="lazy">
+                            <img src="https://drive.google.com/thumbnail?id=1-noQMWL1lZovcmYBLU9yoOODx7fi4lJ6&sz=500" alt="২৪ ঘণ্টায় কোরআন শিখি" loading="lazy">
                         </div>
                         <div class="lang-card-content">
                             <h4 class="lang-course-name">২৪ ঘণ্টায় কোরআন শিখি</h4>
-                            <div class="lang-instructor">👤 মাওলানা শাইখ মুহাম্মাদ জামাল উদ্দীন</div>
+                            <div class="lang-instructor">মাওলানা শাইখ মুহাম্মাদ জামাল উদ্দীন</div>
                         </div>
                     </div>
                 </a>
 
-                <!-- Card 4 -->
+                <!-- Row 2 | Card 4 -->
                 <a href="https://10ms.io/3GnaT2" target="_blank" rel="noopener noreferrer" class="lang-card-anchor">
                     <div class="lang-card">
                         <div class="lang-img-wrapper">
-                            <img src="https://drive.google.com/thumbnail?id=1MJ7DuhIVhjchUKMhIGfh6kN7V9oVQJqW&sz=600" alt="English Communication for Professionals" loading="lazy">
+                            <img src="https://drive.google.com/thumbnail?id=1MJ7DuhIVhjchUKMhIGfh6kN7V9oVQJqW&sz=500" alt="English Communication for Professionals" loading="lazy">
                         </div>
                         <div class="lang-card-content">
                             <h4 class="lang-course-name">English Communication for Professionals</h4>
-                            <div class="lang-instructor">👤 Munzereen Shahid</div>
+                            <div class="lang-instructor">Munzereen Shahid</div>
                         </div>
                     </div>
                 </a>
 
-                <!-- Card 5 -->
+                <!-- Row 3 | Card 5 -->
                 <a href="https://10ms.io/VGnaMo" target="_blank" rel="noopener noreferrer" class="lang-card-anchor">
                     <div class="lang-card">
                         <div class="lang-img-wrapper">
-                            <img src="https://drive.google.com/thumbnail?id=1Zl-26pmt2Srld1e6OnPyRgTl0sVCM7Wg&sz=600" alt="অর্থ বুঝে কুরআন শিখি" loading="lazy">
+                            <img src="https://drive.google.com/thumbnail?id=1Zl-26pmt2Srld1e6OnPyRgTl0sVCM7Wg&sz=500" alt="অর্থ বুঝে কুরআন শিখি" loading="lazy">
                         </div>
                         <div class="lang-card-content">
                             <h4 class="lang-course-name">অর্থ বুঝে কুরআন শিখি</h4>
-                            <div class="lang-instructor">👤 Hafiz Mawlana Muhammad Muhsin Mashkur</div>
+                            <div class="lang-instructor">Hafiz Mawlana Muhammad Muhsin Mashkur</div>
                         </div>
                     </div>
                 </a>
 
-                <!-- Card 6 -->
+                <!-- Row 3 | Card 6 -->
                 <a href="https://10ms.io/hGnabg" target="_blank" rel="noopener noreferrer" class="lang-card-anchor">
                     <div class="lang-card">
                         <div class="lang-img-wrapper">
-                            <img src="https://drive.google.com/thumbnail?id=1xe2qj7g_r-huMGUBjBFXkCGrYW2TVG49&sz=600" alt="Complete English Grammar Course" loading="lazy">
+                            <img src="https://drive.google.com/thumbnail?id=1xe2qj7g_r-huMGUBjBFXkCGrYW2TVG49&sz=500" alt="Complete English Grammar Course" loading="lazy">
                         </div>
                         <div class="lang-card-content">
                             <h4 class="lang-course-name">Complete English Grammar Course</h4>
-                            <div class="lang-instructor">👤 Munzereen Shahid</div>
+                            <div class="lang-instructor">Munzereen Shahid</div>
                         </div>
                     </div>
                 </a>
 
-                <!-- Card 7 -->
+                <!-- Row 4 | Card 7 -->
                 <a href="https://10ms.io/3GnaT2" target="_blank" rel="noopener noreferrer" class="lang-card-anchor">
                     <div class="lang-card">
                         <div class="lang-img-wrapper">
-                            <img src="https://drive.google.com/thumbnail?id=1nmg_JcA1VKx-HggOkVbs0B7oqF5rpaBF&sz=600" alt="IELTS Reading & Listening Mock Tests" loading="lazy">
+                            <img src="https://drive.google.com/thumbnail?id=1nmg_JcA1VKx-HggOkVbs0B7oqF5rpaBF&sz=500" alt="IELTS Reading & Listening Mock Tests" loading="lazy">
                         </div>
                         <div class="lang-card-content">
                             <h4 class="lang-course-name">IELTS Reading & Listening Mock Tests</h4>
-                            <div class="lang-instructor">👤 20 Mock Test</div>
+                            <div class="lang-instructor">20 Mock Test</div>
                         </div>
                     </div>
                 </a>
 
-                <!-- Card 8 -->
+                <!-- Row 4 | Card 8 -->
                 <a href="https://10ms.io/0GnaBs" target="_blank" rel="noopener noreferrer" class="lang-card-anchor">
                     <div class="lang-card">
                         <div class="lang-img-wrapper">
-                            <img src="https://drive.google.com/thumbnail?id=15vltUuVvd9YNwLqu3qtPI_gv1j-HS2dB&sz=600" alt="English Grammar Crash Course" loading="lazy">
+                            <img src="https://drive.google.com/thumbnail?id=15vltUuVvd9YNwLqu3qtPI_gv1j-HS2dB&sz=500" alt="English Grammar Crash Course" loading="lazy">
                         </div>
                         <div class="lang-card-content">
                             <h4 class="lang-course-name">English Grammar Crash Course</h4>
-                            <div class="lang-instructor">👤 Sakib Bin Rashid</div>
+                            <div class="lang-instructor">Sakib Bin Rashid</div>
                         </div>
                     </div>
                 </a>
 
-                <!-- Card 9 -->
+                <!-- Row 5 | Card 9 -->
                 <a href="https://10ms.io/2GnaXE" target="_blank" rel="noopener noreferrer" class="lang-card-anchor">
                     <div class="lang-card">
                         <div class="lang-img-wrapper">
-                            <img src="https://drive.google.com/thumbnail?id=1HqYJYXjOP_-jxTfW0FYoStxc-WZ57Ir6&sz=600" alt="English Writing for Students" loading="lazy">
+                            <img src="https://drive.google.com/thumbnail?id=1HqYJYXjOP_-jxTfW0FYoStxc-WZ57Ir6&sz=500" alt="English Writing for Students" loading="lazy">
                         </div>
                         <div class="lang-card-content">
                             <h4 class="lang-course-name">English Writing for Students</h4>
-                            <div class="lang-instructor">👤 Sakib Bin Rashid +1</div>
+                            <div class="lang-instructor">Sakib Bin Rashid +1</div>
                         </div>
                     </div>
                 </a>
 
-                <!-- Card 10 -->
+                <!-- Row 5 | Card 10 -->
                 <a href="https://10ms.io/4GnaGb" target="_blank" rel="noopener noreferrer" class="lang-card-anchor">
                     <div class="lang-card">
                         <div class="lang-img-wrapper">
-                            <img src="https://drive.google.com/thumbnail?id=1hstczdup2irKzH1wBuP5_vOYzlIF9JBx&sz=600" alt="সবার জন্য Vocabulary" loading="lazy">
+                            <img src="https://drive.google.com/thumbnail?id=1hstczdup2irKzH1wBuP5_vOYzlIF9JBx&sz=500" alt="সবার জন্য Vocabulary" loading="lazy">
                         </div>
                         <div class="lang-card-content">
                             <h4 class="lang-course-name">সবার জন্য Vocabulary</h4>
-                            <div class="lang-instructor">👤 Munzereen Shahid</div>
+                            <div class="lang-instructor">Munzereen Shahid</div>
                         </div>
                     </div>
                 </a>
@@ -659,6 +676,7 @@
             </div>
         </div>
     </div>
+
     <!-- ডার্ক মোডাল উইন্ডো (৬ষ্ঠ-৮ম) -->
     <div id="glowModal" class="blur-overlay">
         <div class="glow-modal-card">
@@ -694,20 +712,18 @@
     <script>
         function createGalaxyStars() {
             const field = document.getElementById('starField');
-            const totalStars = 65; // নিখুঁত গ্যালাক্সি ঘনত্ব
+            const totalStars = 65;
             
             for (let i = 0; i < totalStars; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
                 
-                // র্যান্ডম সাইজ ও পজিশন
                 const size = Math.random() * 2.5 + 0.5;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
                 star.style.left = `${Math.random() * 100}%`;
                 star.style.top = `${Math.random() * 100}%`;
                 
-                // ইন্টারভাল টুইঙ্কেল র্যান্ডমাইজেশন
                 star.style.animationDelay = `${Math.random() * 5}s`;
                 star.style.animationDuration = `${2 + Math.random() * 4}s`;
                 
