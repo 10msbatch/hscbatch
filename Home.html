@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Educational Landing Page</title>
+    <style>
+        /* --- ১. রিবুট ও প্রিমিয়াম বেস স্টাইল --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF; /* পিওর হোয়াইট ব্যাকগ্রাউন্ড */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px 10px;
+        }
+
+        /* --- ২. ক্লাউডি, মিস্ট এবং রেইন অ্যানিমেশন লেয়ার --- */
+        .cinematic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .soft-clouds {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            background: radial-gradient(circle at 50% -30%, rgba(219, 234, 254, 0.5) 0%, rgba(255, 255, 255, 0) 60%);
+            animation: cloudFloat 25s ease-in-out infinite alternate;
+        }
+
+        .floating-mist {
+            position: absolute;
+            bottom: 0;
+            width: 200%;
+            height: 50vh;
+            background: linear-gradient(to top, rgba(241, 245, 249, 0.6), transparent);
+            filter: blur(30px);
+            animation: mistShift 40s linear infinite;
+        }
+
+        .rain-viewport {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .single-drop {
+            position: absolute;
+            background: linear-gradient(transparent, rgba(100, 116, 139, 0.4));
+            width: 1.2px;
+            height: 45px;
+            opacity: 0.4;
+            animation: fastRain 0.9s linear infinite;
+        }
+
+        @keyframes fastRain {
+            0% { transform: translateY(-100px) rotate(-4deg); }
+            100% { transform: translateY(100vh) rotate(-4deg); }
+        }
+
+        @keyframes cloudFloat {
+            0% { transform: translateX(-8%) scale(1); }
+            100% { transform: translateX(4%) scale(1.06); }
+        }
+
+        @keyframes mistShift {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- ৩. হেডার সেকশন ও গ্লো টেক্সট --- */
+        .main-wrapper {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            z-index: 5;
+        }
+
+        .hero-header {
+            margin-bottom: 35px;
+            animation: revealFade 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+        }
+
+        .premium-title {
+            font-size: 38px;
+            font-weight: 900;
+            background: linear-gradient(90deg, #1e1b4b, #3b82f6, #1d4ed8, #1e1b4b);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShine 4s linear infinite;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            display: inline-block;
+        }
+
+        .premium-subtitle {
+            font-size: 16px;
+            color: #475569;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        /* সাউন্ড কন্ট্রোল বাটন স্টাইল */
+        .sound-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        
+        .sound-toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.15);
+            border-color: #3b82f6;
+            color: #1e293b;
+        }
+
+        @keyframes textShine {
+            to { background-position: 200% center; }
+        }
+
+        @keyframes revealFade {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- ৪. রেসপনসিভ গ্রিড লেআউট --- */
+        .responsive-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 5px;
+        }
+
+        /* কার্ডের মূল ডিজাইন (Rounded ও Glassmorphism) */
+        .edu-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 16px;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            cursor: pointer;
+            animation: slowFloat 5s ease-in-out infinite alternate;
+        }
+
+        .responsive-grid .edu-card:nth-child(2n) { animation-duration: 6s; animation-delay: 0.3s; }
+        .responsive-grid .edu-card:nth-child(3n) { animation-duration: 4s; animation-delay: 0.6s; }
+
+        @keyframes slowFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+        }
+
+        /* ইমেজ থাম্বনেইল কন্টেইনার */
+        .card-thumb {
+            height: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            background: rgba(248, 250, 252, 0.4);
+            position: relative;
+        }
+
+        .card-thumb img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* কার্ড টেক্সট ফুটার */
+        .card-caption {
+            background: #0f172a;
+            color: #FFFFFF;
+            padding: 10px 5px;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        /* --- ৫. হোভার ইফেক্টস এবং গ্লো থিমসমূহ --- */
+        .edu-card:hover {
+            transform: translateY(-8px) scale(1.03) !important;
+            animation-play-state: paused;
+        }
+
+        .edu-card:hover .card-thumb img {
+            transform: scale(1.06);
+        }
+
+        .theme-blue:hover {
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.15);
+            border-color: #3b82f6;
+        }
+        .theme-blue:hover .card-caption { background: #3b82f6; }
+
+        .theme-orange:hover {
+            box-shadow: 0 15px 30px rgba(249, 115, 22, 0.15);
+            border-color: #f97316;
+        }
+        .theme-orange:hover .card-caption { background: #f97316; }
+
+        .theme-green:hover {
+            box-shadow: 0 15px 30px rgba(34, 197, 94, 0.15);
+            border-color: #22c55e;
+        }
+        .theme-green:hover .card-caption { background: #22c55e; }
+
+        /* --- ৬. হাই-এন্ড পপআপ মোডাল ডিজাইন --- */
+        .blur-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 15px;
+        }
+
+        .glow-modal-card {
+            background: #FFF6F6;
+            max-width: 480px;
+            width: 100%;
+            border-radius: 24px;
+            padding: 22px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(254, 226, 226, 0.8);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.92) translateY(30px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .close-cross {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            font-size: 26px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+        .close-cross:hover { color: #0f172a; }
+
+        .modal-heading {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 18px;
+            text-align: center;
+            border-bottom: 1px solid #FEE2E2;
+            padding-bottom: 10px;
+        }
+
+        .modal-body {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .feature-item {
+            margin-bottom: 14px;
+        }
+
+        .feature-item h3 {
+            font-size: 14px;
+            color: #0f172a;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .feature-item ul {
+            list-style: none;
+        }
+
+        .feature-item ul li {
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 3px;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .feature-item ul li::before {
+            content: "✓";
+            color: #EF4444;
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+        }
+
+        /* --- ৭. মোডাল ক্লাস বাটন সিলেকশন --- */
+        .modal-btn-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .class-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #FFFFFF;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #334155;
+            font-weight: 700;
+            font-size: 14px;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            transition: all 0.3s;
+        }
+
+        .class-btn .arrow-svg {
+            transition: transform 0.2s;
+        }
+
+        .class-btn:hover {
+            transform: translateY(-2px);
+            color: #0f172a;
+        }
+
+        .class-btn:hover .arrow-svg {
+            transform: translateX(4px);
+        }
+
+        .b-6:hover { border-color: #3b82f6; box-shadow: 0 6px 15px rgba(59, 130, 246, 0.1); }
+        .b-7:hover { border-color: #eab308; box-shadow: 0 6px 15px rgba(234, 179, 8, 0.1); }
+        .b-8:hover { border-color: #f97316; box-shadow: 0 6px 15px rgba(249, 115, 22, 0.1); }
+
+        /* --- ৮. বড় স্ক্রিনের জন্য অপটিমাইজেশন --- */
+        @media (min-width: 768px) {
+            .responsive-grid { 
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px; 
+            }
+            .card-thumb { height: 160px; }
+            .card-caption { font-size: 16px; padding: 14px; }
+            .premium-title { font-size: 48px; }
+            .edu-card { border-radius: 24px; }
+        }
+
+        /* মোবাইল স্ক্রিনে সুন্দর দেখানোর জন্য গ্রিড কলাম অ্যাডজাস্টমেন্ট */
+        @media (max-width: 650px) {
+            .responsive-grid { 
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="ambientRainSound" loop>
+        <source src="https://assets.mixkit.co/active_storage/sfx/2433/2433-84.wav" type="audio/wav">
+    </audio>
+
+    <div class="cinematic-bg">
+        <div class="soft-clouds"></div>
+        <div class="floating-mist"></div>
+        <div id="rainEngine" class="rain-viewport"></div>
+    </div>
+
+    <div class="main-wrapper">
+        
+        <div class="hero-header">
+            <h1 class="premium-title">শেখা হোক আনন্দে!</h1>
+            <p class="premium-subtitle">এক জায়গায় স্কুল ও কলেজের সম্পূর্ণ প্রস্তুতি!</p>
+            
+            <button class="sound-toggle-btn" onclick="toggleAmbientSound()" id="soundBtn">
+                <span>🎵</span> <span id="soundBtnText">আবহাওয়ার সাউন্ড অন করুন</span>
+            </button>
+        </div>
+
+        <div class="responsive-grid">
+            
+            <a href="https://10minuteschool.com/hsc/hsc-26/" target="_blank" class="edu-card theme-blue">
+                <div class="card-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1xYlncVf_PGtyv2IYblgD1dmTV_AVqoKY&sz=500" alt="HSC 26">
+                </div>
+                <div class="card-caption">HSC ২৬</div>
+            </a>
+
+            <a href="https://10minuteschool.com/hsc/hsc-27/" target="_blank" class="edu-card theme-blue">
+                <div class="card-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1aN0vdS05LXeO-7gXi9fpjs8bE5r6Q37l&sz=500" alt="HSC 27">
+                </div>
+                <div class="card-caption">HSC ২৭</div>
+            </a>
+
+            <a href="https://10msbatch.github.io/hscbatch/Science" target="_blank" class="edu-card theme-blue">
+                <div class="card-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1uWQkI54XuOljWmMOl4PJ6G1mC3490jA_&sz=500" alt="HSC 28">
+                </div>
+                <div class="card-caption">HSC ২৮</div>
+            </a>
+
+            <a href="https://10minuteschool.com/ssc/ssc-27/" target="_blank" class="edu-card theme-orange">
+                <div class="card-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1C7q6JdtQ01uLACFN-IVHkR-Art8udadU&sz=500" alt="SSC 27">
+                </div>
+                <div class="card-caption">দশম শ্রেণি</div>
+            </a>
+
+            <a href="https://10minuteschool.com/ssc/ssc-28/" target="_blank" class="edu-card theme-green">
+                <div class="card-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=195SPJIFHXvwlux9rbMvBGJG-qnBUAf0l&sz=500" alt="Class 9">
+                </div>
+                <div class="card-caption">নবম শ্রেণি</div>
+            </a>
+
+            <div onclick="openGlowModal()" class="edu-card theme-green">
+                <div class="card-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=19VyU1imZMN5NUHXB6p3NknPf0sLgcaYy&sz=500" alt="Class 6-8">
+                </div>
+                <div class="card-caption">৬ষ্ঠ - ৮ম শ্রেণি</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="glowModal" class="blur-overlay">
+        <div class="glow-modal-card">
+            <span class="close-cross" onclick="closeGlowModal()">&times;</span>
+            <h2 class="modal-heading">৬ষ্ঠ থেকে ৮ম শ্রেণি অনলাইন ব্যাচ ২০২৬</h2>
+            
+            <div class="modal-body">
+                <div class="feature-item">
+                    <h3>১) লাইভ ক্লাস</h3>
+                    <ul>
+                        <li>সপ্তাহে ৫ দিন লাইভ ক্লাস</li>
+                        <li>দেশের সবচেয়ে অভিজ্ঞ টিচার প্যানেল</li>
+                        <li>৪ বছরে লক্ষাধিক স্টুডেন্ট পড়ানোর অভিজ্ঞতা</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>২) প্র্যাকটিস বুক ও সাজেশন</h3>
+                    <ul>
+                        <li>বোর্ড সিলেবাসের ফুল প্রস্তুতি</li>
+                        <li>পরীক্ষায় আসার মতো প্রশ্ন ও সমাধান</li>
+                        <li>ফ্রি মাস্টারবুকে MCQ প্র্যাকটিস</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>৩) প্যারেন্টস মিটিং ও রিপোর্ট কার্ড</h3>
+                    <ul>
+                        <li>মান্থলি প্যারেন্টস-টিচার মিটিং</li>
+                        <li>রেগুলার অ্যাটেন্ডেন্স আপডেট</li>
+                        <li>এক্সাম রিপোর্ট কার্ড</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="modal-btn-list">
+                <a href="https://10minuteschool.com/class-6/" target="_blank" class="class-btn b-6">
+                    <span>🎒 ৬ষ্ঠ শ্রেণি</span> <span class="arrow-svg">&rarr;</span>
+                </a>
+                <a href="https://10minuteschool.com/class-7/" target="_blank" class="class-btn b-7">
+                    <span>🎒 ৭ম শ্রেণি</span> <span class="arrow-svg">&rarr;</span>
+                </a>
+                <a href="https://10minuteschool.com/class-8/" target="_blank" class="class-btn b-8">
+                    <span>🎒 ৮ম শ্রেণি</span> <span class="arrow-svg">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // বৃষ্টি তৈরি করার ইঞ্জিন
+        function initCinematicRain() {
+            const engine = document.getElementById('rainEngine');
+            const density = 35;
+            for (let i = 0; i < density; i++) {
+                const drop = document.createElement('div');
+                drop.classList.add('single-drop');
+                drop.style.left = `${Math.random() * 100}%`;
+                drop.style.animationDelay = `${Math.random() * 1.5}s`;
+                drop.style.animationDuration = `${0.6 + Math.random() * 0.5}s`;
+                engine.appendChild(drop);
+            }
+        }
+
+        // সাউন্ড কন্ট্রোল করার ফাংশন
+        function toggleAmbientSound() {
+            const audio = document.getElementById('ambientRainSound');
+            const btnText = document.getElementById('soundBtnText');
+            const btn = document.getElementById('soundBtn');
+
+            if (audio.paused) {
+                audio.play();
+                audio.volume = 0.4; // সাউন্ড যাতে বেশি লাউড না হয়, ভলিউম অপ্টিমাইজড
+                btnText.innerText = "আবহাওয়ার সাউন্ড অফ করুন";
+                btn.style.borderColor = "#EF4444"; // অন থাকলে লালচে বর্ডার ভাইব দিবে
+            } else {
+                audio.pause();
+                btnText.innerText = "আবহাওয়ার সাউন্ড অন করুন";
+                btn.style.borderColor = "rgba(226, 232, 240, 0.9)";
+            }
+        }
+
+        // মোডাল হ্যান্ডলার
+        function openGlowModal() { document.getElementById("glowModal").style.display = "flex"; }
+        function closeGlowModal() { document.getElementById("glowModal").style.display = "none"; }
+        
+        window.onclick = function(e) {
+            const modal = document.getElementById("glowModal");
+            if (e.target == modal) { modal.style.display = "none"; }
+        }
+        
+        window.onload = initCinematicRain;
+    </script>
+</body>
+</html>
+
